@@ -1,4 +1,4 @@
-# Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGAII
+# Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II
 
 ## § Introduction
 
