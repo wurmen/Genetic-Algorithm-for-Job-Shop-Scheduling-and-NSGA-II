@@ -16,7 +16,7 @@
 ### :black_nib: NSGA-II架構
 
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/2.png" width="500" height="300">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/2.png" width="550" height="350">
 </div>
 
 
