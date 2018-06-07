@@ -56,6 +56,9 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 
 :bulb: Pseudo code
 
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/7.png" width="450" height="500">
+</div>
 
 ### :black_nib: Reference 
 [A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II ](https://ieeexplore.ieee.org/document/996017/) <br>
