@@ -37,7 +37,7 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 經由上個步驟我們可以得到每個解與其它解的凌越關係表，接著我們要將這些解進行分級，以利作為最終選擇染色體(解)的指標，其概念如下圖所示，我們會透過凌越關係表，將這些解分成不同的level，第一層的非凌越解具有最高層級(也就是柏拉圖前緣解)，而第二層具有次高層級，以此類推，層級越高具有越高的優先權被選擇成為新的人口(population)
 
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/4.png" width="325" height="250">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/4.png" width="325" height="225">
 </div>
 
 因此，一開始要先找出第一層解，也就是在上一步驟形成的表中n<sub>p</sup></sub>= 0的解，在此例中也就是解A及位於藍色線上的解，並給予這些解的排序等級為1。
