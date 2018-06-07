@@ -41,6 +41,11 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 </div>
 
 因此，一開始要先找出第一層解，也就是在上一步驟形成的表中n<sub>p</sup></sub>= 0的解，在此例中也就是解A及位於藍色線上的解，並給予這些解的排序等級為1。
+
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/5.png" width="300" height="175">
+</div>
+
 #### Step 3. 
 
 ### :black_nib: Reference 
