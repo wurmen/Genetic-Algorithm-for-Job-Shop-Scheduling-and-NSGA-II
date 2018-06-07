@@ -25,11 +25,16 @@ NSGE-II的架構如下圖所示，如同前言所提，它的架構與GA相似�
 ### :arrow_down_small: 非凌越排序 (Nondominated sorting approach) <br>
 相較於原本的NSGA，NSGA-II提出了一個更快速的非凌越排序法，並擁有較少的時間複雜度，且不需要指定分享函數(sharing function)，在此主要有五個步驟要被執行。(NSGA詳細內容可參考[原文](https://pdfs.semanticscholar.org/b39d/633524b0b2b46474d35b27c2016f3c3f764d.pdf))
 
-#### 1. 計算每個解的兩個實體(Calculating two entities for each solution)：n<sub>p</sup></sub>、 S<sub>p</sup></sub> 
-p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想像成解p被多少解霸凌)，S<sub>p</sup></sub>則為被解p凌越的解集合(也就是有誰被解p霸凌)，以下圖為例：
+#### Step 1. 計算每個解的兩個實體(Calculating two entities for each solution)：n<sub>p</sup></sub>、 S<sub>p</sup></sub> 
+p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想像成解p被多少解霸凌)，S<sub>p</sup></sub>則為被解p凌越的解集合(也就是有誰被解p霸凌)，以上面的例子為例，可得到左下表：<br>
 
+從右圖中可以很清楚的看到，解A凌越了所有解，因此S<sub>A</sup></sub>={B、C、D}，而n<sub>A</sup></sub>=0；B僅被A給凌越，且凌越了解D，所以n<sub>B</sup></sub>=1、S<sub>B</sup></sub>={D}，其它以此類推......
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/3.png" width="550" height="250">
+</div>
 
-
+#### Step 2. 找出第一組非凌越前緣的解(Finding the members of the first nondominated front)：n<sub>p</sup></sub>= 0
+經由上個步驟我們可以得到每個解與其它解的凌越關係表，接著我們要將這些解進行分級，以利作為最終選擇染色體(解)的指標，其概念如下圖所示，我們會透過凌越關係表，將這些解分成不同的level，第一層的非凌越解具有最高層級(也就是柏拉圖前緣解)，而第二層具有次高層級，以此類推，層級越高具有越高的優先權被選擇成為新的人口(population)
 ### :black_nib: Reference 
 [A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II ](https://ieeexplore.ieee.org/document/996017/) <br>
 [Multi-Objective Stochastic Scheduling Optimization: A Study of Auto Parts Manufacturer in Taiwan](https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&s=id=%22104NCKU5621001%22.&searchmode=basic)
