@@ -1,7 +1,7 @@
 # Nondominated Sorting Genetic Algorithm II (NSGA-II) (cont.)
 
 ## :black_nib: 前言 
-上一篇文章介紹了什麼是基因演算法(GA)，而本文介紹的非凌越排序基因演算法(NSGA-II)由NSGA改良而來，是K.Deb,A.Pratap, S.Agarwal,T.Meyarivan等人於2002年所提出，該演算法的架構與GA相似，但專門被用來求解具有多目標的問題，因此本篇文章將要介紹何謂NSGA-II，並在最後透過PYTHON來進行實作，求解具有雙目標的排程Jop Shop問題。
+上一篇文章介紹了什麼是基因演算法(GA)，而本文介紹的非凌越排序基因演算法(NSGA-II)由NSGA改良而來，是K.Deb, A.Pratap, S.Agarwal, T.Meyarivan於2002年所提出，該演算法的架構與GA相似，但專門被用來求解具有多目標的問題，因此本篇文章將要介紹何謂NSGA-II，並在最後透過PYTHON來進行實作，求解具有雙目標的排程Jop Shop問題。
 
 ## :black_nib: "凌越(dominated)"的概念是什麼? 
 一般而言，在單目標問題中，我們可以很容易的判斷什麼是最佳解，哪些解叫好，哪些叫壞，但當我們遇到多目標問題時，解的品質就不是那麼容易判斷了，尤其是目標之間具有衝突時，因此，在多目標問題中會透過"凌越"的概念來判斷一個解的好壞。<br>
@@ -23,8 +23,7 @@ NSGE-II的架構如下圖所示，如同前言所提，它的架構與GA相似�
 為了確保所留下來的染色體都是優秀的、可行的，在進行適應性評估前(fitness evaluation)採用了菁英策略，此策略簡單來說，就是將交配、突變前的親代與交配、突變後的子代一同保留下來，進行評選，以防止染色體會越選越糟的情形，避免損失掉找到的優質解。
 
 ### :arrow_down_small: 非凌越排序 (Nondominated sorting approach) <br>
-相較於原本的NSGA，NSGA-II提出了一個更快速的非凌越排序法，並擁有較少的時間複雜度，且不需要指定分享函數(sharing function)，在此主要有五個步驟要被執行。(NSGA詳細內容可參考[原文](https://pdfs.semanticscholar.org/b39d/633524b0b2b46474d35b27c2016f3c3f764d.pdf))
-
+相較於原本的NSGA，NSGA-II提出了一個更快速的非凌越排序法，並擁有較少的時間複雜度，且不需要指定分享函數(sharing function)，以下將要介紹整個非凌越排序的主要概念，並沿用上面的例子來進行說明，在此我將它分為五個執行步驟。(NSGA詳細內容可參考[原文](https://pdfs.semanticscholar.org/b39d/633524b0b2b46474d35b27c2016f3c3f764d.pdf))
 #### Step 1. 計算每個解的兩個實體(Calculating two entities for each solution)：n<sub>p</sup></sub>、 S<sub>p</sup></sub> 
 p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想像成解p被多少解霸凌)，S<sub>p</sup></sub>則為被解p凌越的解集合(也就是有誰被解p霸凌)，以上面的例子為例，可得到左下表：<br>
 
@@ -33,20 +32,24 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/3.png" width="600" height="300">
 </div>
 
-#### Step 2. 找出第一組非凌越前緣的解(Finding the members of the first nondominated front)：n<sub>p</sup></sub>= 0
+#### Step 2. 找出第一組非凌越前緣的成員(Finding the members of the first nondominated front)：n<sub>p</sup></sub>= 0
 經由上個步驟我們可以得到每個解與其它解的凌越關係表，接著我們要將這些解進行分級，以利作為最終選擇染色體(解)的指標，其概念如下圖所示，我們會透過凌越關係表，將這些解分成不同的level，第一層的非凌越解具有最高層級(也就是柏拉圖前緣解)，而第二層具有次高層級，以此類推，層級越高具有越高的優先權被選擇成為新的人口(population)
 
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/4.png" width="325" height="225">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/4.png" width="325" height="250">
 </div>
 
-因此，一開始要先找出第一層解，也就是在上一步驟形成的表中n<sub>p</sup></sub>= 0的解，在此例中也就是解A及位於藍色線上的解，並給予這些解的排序等級為1。
+因此，一開始要先找出第一層優先解，也就是在上一步驟形成的表中n<sub>p</sup></sub>= 0的解，在此例中即為解A和位於藍色線上的解，並給予這些解的排序等級為1。
 
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/5.png" width="300" height="175">
 </div>
 
-#### Step 3. 對於每個n<sub>p</sup></sub>= 0，去探訪這寫解
+#### Step 3. 對於每個n<sub>p</sup></sub>= 0的解，去探訪這些解S<sub>p</sup></sub>集合內的每個解(q)，並將集合內解的凌越數n<sub>p</sup></sub>減一<br> (For each solution with n<sub>p</sup></sub>= 0, we visit each member (q) of its set S<sub>p</sup></sub> and reduce its domination count by one.)
+#### Step 4. 在上一步訪問每個解的過程中，若有任何解的n<sub>p</sup></sub>變成0，則該解即屬於第二非凌越前緣，因此賦予它排序等級為2<br>(If for any member the domination count becomes zero, it belongs to the second nondominated front.)
+從Step 2中我們知道n<sub>p</sup></sub>= 0的解只有A，而被A凌越的解有B、C、D(從S<sub>p</sup></sub>得知)，因此我們一一的去造訪這些解，並將其n<sub>p</sup></sub>減一，可得到更新的表如下，並在造訪的過程中發現，解B及解C的n<sub>p</sup></sub>皆變為0，所以它們為第二非凌越前緣的解，故賦予它們排序等級為2，亦即第二優先被挑選成population的解
+
+#### Step 5.重複執行以上步驟，直到所有前緣都被辨識出來為止(The above procedures are continued until all fronts are identified.)
 
 ### :black_nib: Reference 
 [A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II ](https://ieeexplore.ieee.org/document/996017/) <br>
