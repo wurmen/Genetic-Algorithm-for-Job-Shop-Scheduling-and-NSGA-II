@@ -10,7 +10,6 @@ Created on Thu May 24 13:32:33 2018
 import pandas as pd
 import numpy as np
 import time
-
 ''' ================= initialization setting ======================'''
 num_job=10 # number of jobs
 num_mc=10 # number of machines
@@ -20,12 +19,12 @@ ms_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Machines Sequence",index_col
 job_priority_duedate_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Priority",index_col =[0])
 
 # raw_input is used in python 2
-population_size=int(input('Please input the size of population: ') or 10) # default value is 20
+population_size=int(input('Please input the size of population: ') or 20) # default value is 20
 crossover_rate=float(input('Please input the size of Crossover Rate: ') or 0.8) # default value is 0.8
 mutation_rate=float(input('Please input the size of Mutation Rate: ') or 0.3) # default value is 0.5
 mutation_selection_rate=float(input('Please input the mutation selection rate: ') or 0.4)
 num_mutation_jobs=round(num_job*num_mc*mutation_selection_rate)
-num_iteration=int(input('Please input number of iteration: ') or 100) # default value is 100
+num_iteration=int(input('Please input number of iteration: ') or 1000) # default value is 1000
 
 # speed up the data search
 # Below code can be also written "pt = pt_tmp.as_matrix().tolist()"
@@ -124,16 +123,16 @@ for i in range(population_size):
         
 for n in range(num_iteration):           
     '''-------- two point crossover --------'''
-    parent_list=population_list
+    parent_list=population_list[:]
     offspring_list=[]
     S=list(np.random.permutation(population_size)) # generate a random sequence to select the parent chromosome to crossover
     
     for m in range(int(population_size/2)):
         
-        parent_1= population_list[S[2*m]][0:num_job*num_mc]
-        parent_2= population_list[S[2*m+1]][0:num_job*num_mc]
-        child_1=parent_1
-        child_2=parent_2
+        parent_1= population_list[S[2*m]][:]
+        parent_2= population_list[S[2*m+1]][:]
+        child_1=parent_1[:]
+        child_2=parent_2[:]
         
         cutpoint=list(np.random.choice(num_job*num_mc, 2, replace=False))
         cutpoint.sort()
@@ -146,7 +145,7 @@ for n in range(num_iteration):
     '''--------mutatuon--------'''   
     for m in range(len(offspring_list)):
         mutation_prob=np.random.rand()
-        if mutation_rate >= mutation_prob:
+        if mutation_rate <= mutation_prob:
             m_chg=list(np.random.choice(num_job*num_mc, num_mutation_jobs, replace=False)) # chooses the position to mutation
             t_value_last=offspring_list[m][m_chg[0]] # save the value which is on the first mutation position
             for i in range(num_mutation_jobs-1):
@@ -185,7 +184,7 @@ for n in range(num_iteration):
                         
     
     '''--------fitness value(calculate  makespan and TWET)-------------'''
-    total_chromosome=parent_list+offspring_list # combine parent and offspring chromosomes
+    total_chromosome=parent_list[:]+offspring_list[:] # combine parent and offspring chromosomes
     chroms_obj_record={} # record each chromosome objective values as chromosome_obj_record={chromosome:[TWET,makespan]}
     for m in range(population_size*2):
         j_keys=[j for j in range(num_job)]
@@ -238,13 +237,13 @@ for n in range(num_iteration):
     new_pop_obj=[chroms_obj_record[k] for k in new_pop]    
     
 
-#    '''----------comparison----------'''
+    '''----------comparison----------'''
     if n==0:
-        best_list=population_list
-        best_obj=new_pop_obj
+        best_list=population_list[:]
+        best_obj=new_pop_obj[:]
     else:            
-        total_list=population_list+best_list
-        total_obj=new_pop_obj+best_obj
+        total_list=population_list[:]+best_list[:]
+        total_obj=new_pop_obj[:]+best_obj[:]
         
         now_best_front=non_dominated_sorting(population_size,total_obj)
         now_best_distance=calculate_crowding_distance(population_size,total_obj)
@@ -254,6 +253,5 @@ for n in range(num_iteration):
 print(best_list)
 print(best_obj)
 print('the elapsed time:%s'% (time.time() - start_time))
-
 
 
