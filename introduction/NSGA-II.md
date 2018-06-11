@@ -98,9 +98,9 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 
 o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o,max</sup></sub>為最大邊界解、F<sub>o,min</sup></sub>為最小邊界解 <br>
 
-:zap:上述公式有進行正規化的動作，以避免不同目標解間的數值規模差異太大，因此將各目標轉換至相同尺度，以利後續進行比較<br>
-<br>
-:balloon: **Step 2.將每個解在每個目標所算出來的評估距離(distance<sub>o</sup></sub>(i))進行加總，即可得到每個解的總擁擠距離 CD(i)**<br>
+##### :zap:上述公式有進行正規化的動作，以避免不同目標解間的數值規模差異太大，因此將各目標轉換至相同尺度，以利後續進行比較 <br>
+
+:balloon: **Step 2.將每個解在每個目標所算出來的評估距離(distance<sub>o</sup></sub>(i))進行加總，即可得到每個解的總擁擠距離 CD(i)** <br>
 
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/10.png" width="200" height="130">
