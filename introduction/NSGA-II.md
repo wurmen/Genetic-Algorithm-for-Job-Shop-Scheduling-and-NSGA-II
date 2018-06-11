@@ -1,6 +1,7 @@
 # Nondominated Sorting Genetic Algorithm II (NSGA-II) (cont.)
 
 ## :black_nib: 前言 
+
 上一篇文章介紹了什麼是基因演算法(GA)，而本文介紹的非凌越排序基因演算法(NSGA-II)由NSGA改良而來，是K.Deb, A.Pratap, S.Agarwal, T.Meyarivan於2002年所提出，該演算法的架構與GA相似，但專門被用來求解具有多目標的問題，因此本篇文章將要介紹何謂NSGA-II，並在最後透過PYTHON來進行實作，求解具有雙目標的排程Jop Shop問題。
 
 ## :black_nib: "凌越(dominated)"的概念是什麼? 
@@ -68,12 +69,21 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 </div>
 
 ### :arrow_down_small: 擁擠距離 (Crowding-distance)
+
 為了保持解的多樣性，以及當不同解位於同樣的非凌越層級時能做出選擇，這裡提出了擁擠距離的方法，來評估群體中每個解與其周圍解的密度關係，其概念如下圖所示，再算一個特定解的擁擠距離時，我們會循著該解位於的非凌越前緣上，在此前緣中沿著每個目標找出距離該特定解左右最近的兩個解，去計算這兩個解的平均距離，最後將每個目標算出來的距離進行加總，即得到該特定解的擁擠距離。以下圖的雙目標例子來說，第i個解在其前緣的擁擠距離，即是距離解i最近的兩個解所圍出來的長方形的平均邊長。
 
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/8.png" width="500" height="350">
 </div>
 
+擁擠距離詳細的計算方式如下:<br>
+:balloon: **Step 1.將每個目標的解由小到大遞增排序，並透過下列公式算出每個解i在每個目標的評估距離distance<sub>o</sup></sub>(i)**<br>
+
+o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o,max</sup></sub>為最大邊界解、F<sub>o,min</sup></sub>為最小邊界解 <br>
+
+:balloon: **Step 2.將每個解在每個目標所算出來的距離進行加總，即可得到每個解的總擁擠距離CD(i)**<br>
+
+:bulb: Pseudo code
 ### :black_nib: Reference 
 [K.Deb, A.Pratap, S.Agarwal, T.Meyarivan, A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II,IEEE Trans. Evol. Comput.6(2)(2002)182](https://ieeexplore.ieee.org/document/996017/) <br>
 [Wu, Min-You, Multi-Objective Stochastic Scheduling Optimization: A Study of Auto Parts Manufacturer in Taiwan](https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&s=id=%22104NCKU5621001%22.&searchmode=basic)
