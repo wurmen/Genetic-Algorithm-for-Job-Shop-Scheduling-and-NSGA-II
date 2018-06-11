@@ -77,7 +77,12 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 </div>
 
 擁擠距離詳細的計算方式如下:<br>
+
 :balloon: **Step 1.將每個目標的解由小到大遞增排序，並透過下列公式算出每個解i在每個目標的評估距離distance<sub>o</sup></sub>(i)**<br>
+
+<div align=center>
+<img src="" width="350" height="150">
+</div>
 
 o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o,max</sup></sub>為最大邊界解、F<sub>o,min</sup></sub>為最小邊界解 <br>
 
