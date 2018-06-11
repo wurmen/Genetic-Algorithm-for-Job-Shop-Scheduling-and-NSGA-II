@@ -71,7 +71,7 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 為了保持解的多樣性，以及當不同解位於同樣的非凌越層級時能做出選擇，這裡提出了擁擠距離的方法，來評估群體中每個解與其周圍解的密度關係，其概念如下圖所示，再算一個特定解的擁擠距離時，我們會循著該解位於的非凌越前緣上，在此前緣中沿著每個目標找出距離該特定解左右最近的兩個解，去計算這兩個解的平均距離，最後將每個目標算出來的距離進行加總，即得到該特定解的擁擠距離。以下圖的雙目標例子來說，第i個解在其前緣的擁擠距離，即是距離解i最近的兩個解所圍出來的長方形的平均邊長。
 
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/8.png" width="450" height="300">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/8.png" width="500" height="350">
 </div>
 
 ### :black_nib: Reference 
