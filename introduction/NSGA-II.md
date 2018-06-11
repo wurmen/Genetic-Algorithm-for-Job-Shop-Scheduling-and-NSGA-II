@@ -8,8 +8,8 @@
 一般而言，在單目標問題中，我們可以很容易的判斷什麼是最佳解，哪些解叫好，哪些叫壞，但當我們遇到多目標問題時，解的品質就不是那麼容易判斷了，尤其是目標之間具有衝突時，因此，在多目標問題中會透過"凌越"的概念來判斷一個解的好壞。<br>
 
 我們舉一個簡單的例子來說明此概念，假設現在有四個人想跟我做朋友，他們各自的薪水及身高如左下表所示，而我的交友條件有兩個目標-身高及薪水，也就是我希望所交到的朋友身高與薪水越高越好，因此這兩個目標皆為最大化問題。從表中可以發現，A不管再身高或薪水都表現比其他人好，所以我們稱A凌越其他所有解，以數學符號表示為 A≻B、C、D，而A在該問題中又可被稱為非凌越解(non-dominated solution)，另外，B與C在身高及薪水上，各有其優勢，因此這兩個解互不凌越，D不管再身高還是薪水都劣於其他人，所以D被所有人凌越，也就是A≻D、B≻D，C≻D。<br>
-<br>
 
+<br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/1.png" width="550" height="250">
 </div>
@@ -19,12 +19,13 @@
 
 ## :black_nib: NSGA-II架構
 NSGE-II的架構如下圖所示，如同前言所提，它的架構與GA相似，唯一較大的不同在於紅色框的部分，因此接下來將會放較多的重心在說明紅色框內的四個部分，並在最後進行統整說明。
-<br>
 
+<br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/2.png" width="550" height="350">
 </div>
 <br>
+
 ### :arrow_down_small: 菁英策略 (Elitism strategy) <br>
 
 為了確保所留下來的染色體都是優秀的、可行的，在進行適應性評估前(fitness evaluation)採用了菁英策略，此策略簡單來說，就是將交配、突變前的親代與交配、突變後的子代一同保留下來，進行評選，以防止染色體會越選越糟的情形，避免損失掉找到的優質解。
