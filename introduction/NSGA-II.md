@@ -56,6 +56,7 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/5.png" width="300" height="175">
 </div>
+<br>
 
 :balloon: **Step 3. 對於每個n<sub>p</sup></sub>= 0的解，去探訪這些解S<sub>p</sup></sub>集合內的每個解(q)，並將集合內解的凌越數n<sub>p</sup></sub>減一<br> (For each solution with n<sub>p</sup></sub>= 0, we visit each member (q) of its set S<sub>p</sup></sub> and reduce its domination count by one.)**<br>
 
@@ -63,9 +64,12 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 **(If for any member the domination count becomes zero, it belongs to the second nondominated front.)**<br>
 
 從Step 2中我們知道n<sub>p</sup></sub>= 0的解只有A，而被A凌越的解有B、C、D(從S<sub>p</sup></sub>得知)，因此我們一一的去造訪這些解，並將其n<sub>p</sup></sub>減一，可得到更新的表如下，並在造訪的過程中發現，解B及解C的n<sub>p</sup></sub>皆變為0，所以它們為第二非凌越前緣的解，故賦予它們排序等級為2，亦即第二優先被挑選成population的解
+
+<br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/6.png" width="300" height="175">
 </div>
+<br>
 
 :balloon: **Step 5.重複執行以上步驟，直到所有前緣都被辨識出來為止**<br>
 **(The above procedures are continued until all fronts are identified.)**<br>
