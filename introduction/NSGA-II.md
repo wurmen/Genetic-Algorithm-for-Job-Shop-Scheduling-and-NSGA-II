@@ -78,7 +78,7 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 
 擁擠距離詳細的計算方式如下:<br>
 
-:balloon: **Step 1.將每個目標的解由小到大遞增排序，並透過下列公式算出每個解i在每個目標的評估距離distance<sub>o</sup></sub>(i)**<br>
+:balloon: **Step 1.將每個目標的解由小到大遞增排序，並透過下列公式算出每個解 i在每個目標的評估距離 distance<sub>o</sup></sub>(i)**<br>
 
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/9.png" width="360" height="130">
@@ -86,7 +86,7 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 
 o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o,max</sup></sub>為最大邊界解、F<sub>o,min</sup></sub>為最小邊界解 <br>
 
-:balloon: **Step 2.將每個解在每個目標所算出來的距離進行加總，即可得到每個解的總擁擠距離CD(i)**<br>
+:balloon: **Step 2.將每個解在每個目標所算出來的評估距離(distance<sub>o</sup></sub>(i))進行加總，即可得到每個解的總擁擠距離 CD(i)**<br>
 
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/10.png" width="200" height="130">
