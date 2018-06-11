@@ -49,6 +49,7 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 </div>
 
 :balloon: **Step 3. 對於每個n<sub>p</sup></sub>= 0的解，去探訪這些解S<sub>p</sup></sub>集合內的每個解(q)，並將集合內解的凌越數n<sub>p</sup></sub>減一<br> (For each solution with n<sub>p</sup></sub>= 0, we visit each member (q) of its set S<sub>p</sup></sub> and reduce its domination count by one.)**<br>
+
 :balloon: **Step 4. 在上一步訪問每個解的過程中，若有任何解n<sub>p</sup></sub>變成0，則該解即屬於第二非凌越前緣，因此賦予它排序等級為2**<br>
 **(If for any member the domination count becomes zero, it belongs to the second nondominated front.)**<br>
 
@@ -57,7 +58,8 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/6.png" width="300" height="175">
 </div>
 
-:balloon: **Step 5.重複執行以上步驟，直到所有前緣都被辨識出來為止(The above procedures are continued until all fronts are identified.)**<br>
+:balloon: **Step 5.重複執行以上步驟，直到所有前緣都被辨識出來為止**<br>
+**(The above procedures are continued until all fronts are identified.)**<br>
 
 :bulb: Pseudo code
 
