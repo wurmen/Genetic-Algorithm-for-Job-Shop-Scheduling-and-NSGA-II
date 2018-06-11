@@ -81,14 +81,23 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 :balloon: **Step 1.將每個目標的解由小到大遞增排序，並透過下列公式算出每個解i在每個目標的評估距離distance<sub>o</sup></sub>(i)**<br>
 
 <div align=center>
-<img src="" width="350" height="150">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/9.png" width="360" height="130">
 </div>
 
 o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o,max</sup></sub>為最大邊界解、F<sub>o,min</sup></sub>為最小邊界解 <br>
 
 :balloon: **Step 2.將每個解在每個目標所算出來的距離進行加總，即可得到每個解的總擁擠距離CD(i)**<br>
 
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/10.png" width="200" height="130">
+</div>
+
 :bulb: Pseudo code
+
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/11.png" width="520" height="400">
+</div>
+
 ### :black_nib: Reference 
 [K.Deb, A.Pratap, S.Agarwal, T.Meyarivan, A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II,IEEE Trans. Evol. Comput.6(2)(2002)182](https://ieeexplore.ieee.org/document/996017/) <br>
 [Wu, Min-You, Multi-Objective Stochastic Scheduling Optimization: A Study of Auto Parts Manufacturer in Taiwan](https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&s=id=%22104NCKU5621001%22.&searchmode=basic)
