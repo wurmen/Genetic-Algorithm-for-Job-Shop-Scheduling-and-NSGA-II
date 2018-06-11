@@ -23,16 +23,19 @@ NSGE-II的架構如下圖所示，如同前言所提，它的架構與GA相似�
 為了確保所留下來的染色體都是優秀的、可行的，在進行適應性評估前(fitness evaluation)採用了菁英策略，此策略簡單來說，就是將交配、突變前的親代與交配、突變後的子代一同保留下來，進行評選，以防止染色體會越選越糟的情形，避免損失掉找到的優質解。
 
 ### :arrow_down_small: 非凌越排序 (Nondominated sorting approach) <br>
-相較於原本的NSGA，NSGA-II提出了一個更快速的非凌越排序法，並擁有較少的時間複雜度，且不需要指定分享函數(sharing function)，以下將要介紹整個非凌越排序的主要概念，並沿用上面的例子來進行說明，在此我將它分為五個執行步驟。(NSGA詳細內容可參考[原文](https://pdfs.semanticscholar.org/b39d/633524b0b2b46474d35b27c2016f3c3f764d.pdf))
-#### Step 1. 計算每個解的兩個實體(Calculating two entities for each solution)：n<sub>p</sup></sub>、 S<sub>p</sup></sub> 
-p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想像成解p被多少解霸凌)，S<sub>p</sup></sub>則為被解p凌越的解集合(也就是有誰被解p霸凌)，以上面的例子為例，可得到左下表：<br>
+相較於原本的NSGA，NSGA-II提出了一個更快速的非凌越排序法，並擁有較少的時間複雜度，且不需要指定分享函數(sharing function)，以下將要介紹整個非凌越排序的主要概念，並沿用上面的例子來進行說明，在此我將它分為五個執行步驟。(NSGA詳細內容可參考[原文](https://pdfs.semanticscholar.org/b39d/633524b0b2b46474d35b27c2016f3c3f764d.pdf)) <br>
+
+:balloon: **Step 1. 計算每個解的兩個實體(Calculating two entities for each solution)：n<sub>p</sup></sub>、 S<sub>p</sup></sub>** <br>
+
+p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想像成解p被多少解霸凌)，S<sub>p</sup></sub>則為被解p凌越的解集合(也就是有誰被解p霸凌)，以上面的例子為例，可得到左下表：
 
 從右圖中可以很清楚的看到，解A凌越了所有解，因此S<sub>A</sup></sub>={B、C、D}，而n<sub>A</sup></sub>=0；B僅被A給凌越，且凌越了解D，所以n<sub>B</sup></sub>=1、S<sub>B</sup></sub>={D}，其它以此類推......
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/3.png" width="600" height="300">
 </div>
 
-#### Step 2. 找出第一組非凌越前緣的成員(Finding the members of the first nondominated front)：n<sub>p</sup></sub>= 0
+:balloon: **Step 2. 找出第一組非凌越前緣的成員(Finding the members of the first nondominated front)：n<sub>p</sup></sub>= 0** <br>
+
 經由上個步驟我們可以得到每個解與其它解的凌越關係表，接著我們要將這些解進行分級，以利作為最終選擇染色體(解)的指標，其概念如下圖所示，我們會透過凌越關係表，將這些解分成不同的level，第一層的非凌越解具有最高層級(也就是柏拉圖前緣解)，而第二層具有次高層級，以此類推，層級越高具有越高的優先權被選擇成為新的人口(population)
 
 <div align=center>
@@ -45,20 +48,25 @@ p為被計算解的代稱，n<sub>p</sup></sub>表示凌越解p的個數(可想�
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/5.png" width="300" height="175">
 </div>
 
-#### Step 3. 對於每個n<sub>p</sup></sub>= 0的解，去探訪這些解S<sub>p</sup></sub>集合內的每個解(q)，並將集合內解的凌越數n<sub>p</sup></sub>減一<br> (For each solution with n<sub>p</sup></sub>= 0, we visit each member (q) of its set S<sub>p</sup></sub> and reduce its domination count by one.)
-#### Step 4. 在上一步訪問每個解的過程中，若有任何解的n<sub>p</sup></sub>變成0，則該解即屬於第二非凌越前緣，因此賦予它排序等級為2<br>(If for any member the domination count becomes zero, it belongs to the second nondominated front.)
+:balloon: **Step 3. 對於每個n<sub>p</sup></sub>= 0的解，去探訪這些解S<sub>p</sup></sub>集合內的每個解(q)，並將集合內解的凌越數n<sub>p</sup></sub>減一<br> (For each solution with n<sub>p</sup></sub>= 0, we visit each member (q) of its set S<sub>p</sup></sub> and reduce its domination count by one.)**<br>
+:balloon: **Step 4. 在上一步訪問每個解的過程中，若有任何解n<sub>p</sup></sub>變成0，則該解即屬於第二非凌越前緣，因此賦予它排序等級為2**<br>
+**(If for any member the domination count becomes zero, it belongs to the second nondominated front.)**<br>
+
 從Step 2中我們知道n<sub>p</sup></sub>= 0的解只有A，而被A凌越的解有B、C、D(從S<sub>p</sup></sub>得知)，因此我們一一的去造訪這些解，並將其n<sub>p</sup></sub>減一，可得到更新的表如下，並在造訪的過程中發現，解B及解C的n<sub>p</sup></sub>皆變為0，所以它們為第二非凌越前緣的解，故賦予它們排序等級為2，亦即第二優先被挑選成population的解
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/6.png" width="300" height="175">
 </div>
 
-#### Step 5.重複執行以上步驟，直到所有前緣都被辨識出來為止(The above procedures are continued until all fronts are identified.)
+:balloon: **Step 5.重複執行以上步驟，直到所有前緣都被辨識出來為止(The above procedures are continued until all fronts are identified.)**<br>
 
 :bulb: Pseudo code
 
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/7.png" width="450" height="500">
 </div>
+
+### :arrow_down_small: 擁擠距離 (Crowding-distance)
+為了保持解的多樣性，以及當不同解位於同樣的非凌越層級時能做出選擇，這裡提出了擁擠距離的方法，來評估群體中每個解與其周圍解的密度關係，其概念如下圖所示，再算一個特定解的擁擠距離時，我們會循著該解位於的非凌越前緣上，在此前緣中沿著每個目標找出距離該特定解左右最近的兩個解，去計算這兩個解的平均距離，最後將每個目標算出來的距離進行加總，即得到該特定解的擁擠距離。以下圖的雙目標例子來說，第i個解在其前緣的擁擠距離，即是距離解i最近的兩個解所圍出來的長方形的平均邊長。
 
 ### :black_nib: Reference 
 [A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II ](https://ieeexplore.ieee.org/document/996017/) <br>
