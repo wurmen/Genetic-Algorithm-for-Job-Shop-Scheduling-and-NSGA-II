@@ -1,5 +1,7 @@
 # Nondominated Sorting Genetic Algorithm II (NSGA-II) (cont.)
-
+*POLab* <br>
+*cheng-man wu*
+<br>
 ## :black_nib: 前言 
 上一篇文章介紹了什麼是基因演算法(GA)，而本文介紹的非凌越排序基因演算法(NSGA-II)由NSGA改良而來，是K.Deb, A.Pratap, S.Agarwal, T.Meyarivan於2002年所提出，該演算法的架構與GA相似，但專門被用來求解具有多目標的問題，因此本篇文章將要介紹何謂NSGA-II，並在最後透過PYTHON來進行實作，求解具有雙目標的排程Jop Shop問題。
 <br>
@@ -112,6 +114,19 @@ o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/11.png" width="560" height="380">
 </div>
+
+### :arrow_down_small: 選擇機制 (Selection mechanism)
+
+經由上述的過程，最終population內的每條染色體(解)，皆擁有兩個屬性:
+- 非凌越層級 (nondomination rank)
+- 擁擠距離 (crowding distance)
+
+最後再挑選新的population成員時，則會依照下列規則進行挑選:
+- 先比較每個解的非凌越層級，**有越高層級的解(數字較小)，具有越高的被優先選擇權**
+- 若兩個解的非凌越層級相同，則比較擁擠距離，**擁擠距離越大有越高的被優先選擇權**
+
+
+
 
 ### :black_nib: Reference 
 [K.Deb, A.Pratap, S.Agarwal, T.Meyarivan, A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II,IEEE Trans. Evol. Comput.6(2)(2002)182](https://ieeexplore.ieee.org/document/996017/) <br>
