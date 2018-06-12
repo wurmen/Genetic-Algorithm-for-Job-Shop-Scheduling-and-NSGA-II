@@ -4,7 +4,7 @@
 *2018/06/12*
 <br>
 ## :black_nib: 前言 
-上一篇文章介紹了什麼是基因演算法(GA)，而本文介紹的非凌越排序基因演算法(NSGA-II)由NSGA改良而來，是K.Deb, A.Pratap, S.Agarwal, T.Meyarivan於2002年所提出，該演算法的架構與GA相似，但專門被用來求解具有多目標的問題，因此本篇文章將要介紹何謂NSGA-II，並在最後透過PYTHON來進行實作，求解具有雙目標的排程Jop Shop問題。
+上一篇文章介紹了什麼是基因演算法(GA)，而本文介紹的非凌越排序基因演算法(NSGA-II)由 NSGA 改良而來，是 K.Deb, A.Pratap, S.Agarwal, T.Meyarivan 於 2002 年所提出，該演算法的架構與 GA 相似，但專門被用來求解具有多目標的問題，因此本篇文章將要介紹何謂 NSGA-II ，並在最後透過 PYTHON 來進行實作，求解具有雙目標的排程 Jop Shop 問題。
 <br>
 
 ## :black_nib: "凌越(dominated)"的概念是什麼? 
