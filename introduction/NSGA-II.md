@@ -125,8 +125,16 @@ o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o
 - 先比較每個解的非凌越層級，**有越高層級的解(數字較小)，具有越高的被優先選擇權**
 - 若兩個解的非凌越層級相同，則比較擁擠距離，**擁擠距離越大有越高的被優先選擇權**
 
+## :black_nib: 總結
+最後透過下面的gif圖，統整NSGA-II的整個流程，對於每一次迭代皆會進行下面的動作，直到所設定的條件到達為止:
 
+- 首先有一初始的人口(親代)P<sub>t</sup></sub>內含N個染色體，經由突變及交配後產生子代Q<sub>t</sup></sub>。
+- 由於採用菁英策略，因此將親代與子代一同保留下來，進行挑選。
+- 接著進行非凌越排序，以得到每個解的非凌越層級 (F<sub>1</sup></sub><層級1>、F<sub>2</sup></sub><層級2>.....)。
+- 最後挑選新的N個染色體當成下一次迭代的人口，先依照非凌越層級高低來選擇，若發生如下圖所示的，剩餘要挑選進入新人口的染色體數小於下一個要被選擇的非凌越層級內的染色體的數，則透過擁擠距離來進行挑選，選擇擁擠距離較大者進入新的人口。
+- 最終產生新的人口P<sub>t+1</sup></sub>，進入下一次迭代，重複上述流程。
 
+![](https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/123.gif)
 
 ### :black_nib: Reference 
 [K.Deb, A.Pratap, S.Agarwal, T.Meyarivan, A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II,IEEE Trans. Evol. Comput.6(2)(2002)182](https://ieeexplore.ieee.org/document/996017/) <br>
