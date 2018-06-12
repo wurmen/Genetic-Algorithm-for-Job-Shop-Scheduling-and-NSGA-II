@@ -1,4 +1,4 @@
-# Nondominated Sorting Genetic Algorithm II (NSGA-II) (cont.)
+# Nondominated Sorting Genetic Algorithm II (NSGA-II) 
 *POLab* <br>
 *cheng-man wu*<br>
 *2018/06/12*
