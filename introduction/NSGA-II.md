@@ -138,5 +138,5 @@ o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o
 ![](https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/123.gif)
 
 ### :black_nib: Reference 
-[K.Deb, A.Pratap, S.Agarwal, T.Meyarivan, A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II,IEEE Trans. Evol. Comput.6(2)(2002)182](https://ieeexplore.ieee.org/document/996017/) <br>
-[Wu, Min-You, Multi-Objective Stochastic Scheduling Optimization: A Study of Auto Parts Manufacturer in Taiwan](https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&s=id=%22104NCKU5621001%22.&searchmode=basic)
+- [K.Deb, A.Pratap, S.Agarwal, T.Meyarivan, A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II,IEEE Trans. Evol. Comput.6(2)(2002)182](https://ieeexplore.ieee.org/document/996017/) <br>
+- [Wu, Min-You, Multi-Objective Stochastic Scheduling Optimization: A Study of Auto Parts Manufacturer in Taiwan](https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&s=id=%22104NCKU5621001%22.&searchmode=basic)
