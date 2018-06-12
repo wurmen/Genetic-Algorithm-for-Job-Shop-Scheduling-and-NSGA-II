@@ -110,7 +110,7 @@ o表示目標、F<sub>o</sup></sub>(i)為目標O排序後的第i個解、F<sub>o
 :bulb: Pseudo code
 
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/11.png" width="520" height="400">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/Picture/11.png" width="560" height="380">
 </div>
 
 ### :black_nib: Reference 
