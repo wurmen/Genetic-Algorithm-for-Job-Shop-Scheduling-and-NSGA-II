@@ -39,7 +39,7 @@ NSGE-II 的架構如下圖所示，如同前言所提，它的架構與 GA 相�
 
 :balloon: **Step 1. 計算每個解的兩個實體 (Calculating two entities for each solution) ：n<sub>p</sup></sub>、 S<sub>p</sup></sub>** <br>
 
- p 為被計算解的代稱，n<sub>p</sup></sub>表示凌越解 p 的個數(可想像成解 p 被多少解霸凌)，S<sub>p</sup></sub>則為被解 p 凌越的解集合(也就是有誰被解 p 霸凌)，以上面的例子為例，可得到左下表：
+ p 為被計算解的代稱，n<sub>p</sup></sub> 表示凌越解 p 的個數(可想像成解 p 被多少解霸凌)，S<sub>p</sup></sub> 則為被解 p 凌越的解集合(也就是有誰被解 p 霸凌)，以上面的例子為例，可得到左下表：
 
 從右圖中可以很清楚的看到，解 A 凌越了所有解，因此 S<sub>A</sup></sub>={B、C、D} ，而 n<sub>A</sup></sub>=0 ； B 僅被 A 給凌越，且凌越了解 D ，所以 n<sub>B</sup></sub>=1 、 S<sub>B</sup></sub>={D} ，其它以此類推......
 <div align=center>
@@ -66,7 +66,7 @@ NSGE-II 的架構如下圖所示，如同前言所提，它的架構與 GA 相�
 :balloon: **Step 4. 在上一步訪問每個解的過程中，若有任何解 n<sub>p</sup></sub> 變成0，則該解即屬於第二非凌越前緣，因此賦予它排序等級為2**<br>
 **(If for any member the domination count becomes zero, it belongs to the second nondominated front.)**<br>
 
-從Step 2中我們知道 n<sub>p</sup></sub>= 0 的解只有A，而被A凌越的解有 B、C、D (從 S<sub>p</sup></sub> 得知)，因此我們一一的去造訪這些解，並將其 n<sub>p</sup></sub> 減一，可得到更新的表如下，並在造訪的過程中發現，解 B 及解 C 的 n<sub>p</sup></sub> 皆變為0，所以它們為第二非凌越前緣的解，故賦予它們排序等級為2，亦即第二優先被挑選成 population 的解
+從Step 2中我們知道 n<sub>p</sup></sub>= 0 的解只有 A，而被 A 凌越的解有 B、C、D (從 S<sub>p</sup></sub> 得知)，因此我們一一的去造訪這些解，並將其 n<sub>p</sup></sub> 減一，可得到更新的表如下，並在造訪的過程中發現，解 B 及解 C 的 n<sub>p</sup></sub> 皆變為0，所以它們為第二非凌越前緣的解，故賦予它們排序等級為2，亦即第二優先被挑選成 population 的解
 
 <br>
 <div align=center>
