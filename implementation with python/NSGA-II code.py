@@ -2,7 +2,10 @@
 """
 Created on Thu May 24 13:32:33 2018
 
-@author: wu
+@author: cheng-man wu
+
+LinkedIn: www.linkedin.com/in/chengmanwu
+Github: https://github.com/wurmen
 """
 '''==========Solving job shop scheduling problem by NSGA-II algorithm in python======='''
 # importing required modules
