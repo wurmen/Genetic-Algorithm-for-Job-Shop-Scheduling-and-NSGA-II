@@ -9,7 +9,7 @@
 |2018|Job Shop scheduling problem|
 ## § Implementation with Python
 
-|更新時間|文章|
-|---|---|
-|2018|GA|
-|2018|NSGA-II|
+|更新時間|文章|連結|
+|---|---|---|
+|2018|GA|Documentation / code / Folder|
+|2018|NSGA-II|Documentation / code / Folder|
