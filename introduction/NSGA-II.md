@@ -1,6 +1,6 @@
 # Nondominated Sorting Genetic Algorithm II (NSGA-II) 
 *POLab* <br>
-*[cheng-man wu](https://www.linkedin.com/feed/?trk=nav_back_to_linkedin)*<br>
+*[cheng-man wu](https://www.linkedin.com/in/chengmanwu/)*<br>
 *2018/06/12*
 <br>
 ## :black_nib: 前言 
