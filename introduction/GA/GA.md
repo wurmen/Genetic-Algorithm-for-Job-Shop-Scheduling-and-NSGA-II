@@ -40,7 +40,7 @@
 
 ### :arrow_down_small: 交配 (Crossover) <br>
 
-### :arrow_down_small: 突變 () <br>
+### :arrow_down_small: 突變 (Mutation) <br>
 
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
