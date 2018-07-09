@@ -43,7 +43,7 @@ NSGE-II 的架構如下圖所示，如同前言所提，它的架構與 GA 相�
 
 從右圖中可以很清楚的看到，解 A 凌越了所有解，因此 S<sub>A</sup></sub>={B、C、D} ，而 n<sub>A</sup></sub>=0 ； B 僅被 A 給凌越，且凌越了解 D ，所以 n<sub>B</sup></sub>=1 、 S<sub>B</sup></sub>={D} ，其它以此類推......
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/NSGA-II/Picture/3.png.png" width="600" height="300">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/NSGA-II/Picture/3.png" width="600" height="300">
 </div>
 
 :balloon: **Step 2. 找出第一組非凌越前緣的成員 (Finding the members of the first nondominated front) ：n<sub>p</sup></sub>= 0** <br>
