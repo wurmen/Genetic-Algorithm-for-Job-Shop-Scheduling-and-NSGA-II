@@ -36,6 +36,12 @@
 
 :bulb: 為什麼是使用8個位元?
 
+### :arrow_down_small: 初始族群 (Inital population) <br>
+
+### :arrow_down_small: 交配 (Crossover) <br>
+
+### :arrow_down_small: 突變 () <br>
+
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
 - Goldberg, D. E. (1989). Genetic Algorithms in Search, Optimization and Machine Learning. Addison-Wesley Longman Publishing Co., Inc. Boston, MA.
