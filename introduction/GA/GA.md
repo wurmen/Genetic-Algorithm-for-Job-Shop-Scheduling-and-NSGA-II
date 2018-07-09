@@ -23,13 +23,18 @@
 在GA中通常一個染色體代表求解問題的一個解，因此在演算法開始前，必須先依照問題的屬性來進行染色體的設計，染色體編碼的形式有很多種，最常見的編碼方式為二進位編碼，也就是將數值轉換成1與0的排列字串，我們以[維基百科](https://zh.wikipedia.org/wiki/%E6%9F%93%E8%89%B2%E9%AB%94_(%E9%81%BA%E5%82%B3%E6%BC%94%E7%AE%97%E6%B3%95))內舉的例子進行說明：<br>
 
 假設現在有一個問題是要找出介於0 ~ 255間的一個整數 x ，這個整數 x 要使得函數 f(x)=x<sup>2</sup></sub> 的值最大 (當然這是個非常簡單的問題，但這裡為了作個簡單的說明，所以不要太在意XD)。 <br>
-由於0 ~ 255間的整數皆有可能為解答，為了表示這區間內的所有整數，在這可使用8位元的2進位串來表示一個解，如下圖所示，在GA中也就是一個由8個基因所組成的染色體
+
+由於0 ~ 255間的整數皆有可能為解答，為了表示這區間內的所有整數，在這可使用8位元的2進位串來表示一個解，如下圖所示，在 GA 中每一個染色體都由8個基因所組成。<br>
+
+另外，藉由此範例順便說明解碼 (Decoding) 的意義，因為 GA 中我們是透過編碼後的染色體來代表一個解，所以當要由染色體來推得原本的解時，就必須經過解碼的步驟，就如圖所示的，將染色體轉換回它所代表的實際數值。
 
 <br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/2.png" width="550" height="475">
 </div>
 <br>
+
+:bulb: 為什麼是使用8個位元?
 
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
