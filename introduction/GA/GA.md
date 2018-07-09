@@ -24,7 +24,7 @@
 <br>
 <div align=center>
   
-  #### 01010101
+   **01010101**
 
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
