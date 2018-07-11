@@ -88,6 +88,13 @@
 
 通常在進行交配時，會根據所設定的交配率 (Crossover rate)來決定任意兩條染色體是否要做交配的動作，以產生子代。
 
+
+
+#### :unlock: 本步驟所需注意或設定的參數
+- 交配方式 (Crossover method)
+- 交配率 (Crossover rate)
+
+
 ### :arrow_down_small: 突變 (Mutation) <br>
 
 ## :black_nib: Reference
