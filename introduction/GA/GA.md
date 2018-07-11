@@ -60,10 +60,11 @@
 - 族群大小 (Population size)
 
 --------------------------------------------
-在GA中會透過所謂的基因操作(Genetic operations)-交配及突變，來產生子代，也就是產生新的潛在解(當然也是有可能產生重複的解)
+在GA中會透過所謂的基因操作 (Genetic operations) - 交配及突變，來產生子代，也就是產生新的潛在解 (當然也是有可能產生重複的解)。
 ### :arrow_down_small: 交配 (Crossover) <br>
 
-常見的交配方式主要可以分成以下三種：<br>
+通常在進行交配時，會先根據所設定的交配率 (Crossover rate) 來決定任意兩條染色體是否要做交配的動作，以產生子代，交配的方式也是有很多種，下面將說明三種常見的交配方法 (在排程實例說明中，將會示範其他不一樣的交配方式。)<br>
+(例子皆以二元編碼的染色體進行示範)<br>
 
 **1. 單點交配 (Single point crossover)** <br>
 
@@ -86,16 +87,13 @@
 
 **3. 均勻交配 (Uniform crossover)**<br>
 
+均勻交配則是先隨機產生一條與親代染色體等長的二元編碼，稱為 Crossover Mask，當 Mask 內的值呈現1時，則親代染色體與 Mask 相對應的基因就必須彼此互相交換，其餘則不須交換，用此方式來產生新的子代。
+
 <br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/6.png" width="460" height="325">
 </div>
 <br>
-
-
-通常在進行交配時，會根據所設定的交配率 (Crossover rate)來決定任意兩條染色體是否要做交配的動作，以產生子代。
-
-
 
 #### :unlock: 本步驟所需注意或設定的參數
 - 交配方式 (Crossover method)
