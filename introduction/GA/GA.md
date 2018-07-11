@@ -106,12 +106,15 @@
 ### :arrow_down_small: 突變 (Mutation) <br>
 
 為了增加解的多樣性，避免陷入局部解，對於每個染色體，會根據所設定的突變率，來決定某個染色體是否要進行突變，透過隨機的方式來改變單一染色體內的基因，一個常見的方式，即為針對單一染色體，隨機挑選染色體中的若干個基因進行互換，如下圖所示：
-
 <br>
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/7.png" width="390" height="215">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/7.png" width="445" height="225">
 </div>
 <br> 
+
+#### :unlock: 本步驟所需注意或設定的參數
+- 突變方式 (Mutation method)
+- 突變率 (Mutation rate)
 
 ---------------------------------
 
