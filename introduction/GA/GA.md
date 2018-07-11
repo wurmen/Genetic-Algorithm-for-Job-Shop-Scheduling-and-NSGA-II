@@ -1,7 +1,7 @@
 # Genetic Algorithm (GA)
 *POLab* <br>
 *[cheng-man wu](https://www.linkedin.com/feed/?trk=nav_back_to_linkedin)*<br>
-
+*2018/07*
 <br>
 
 ## :black_nib: GA 背景 (Background)
@@ -60,7 +60,8 @@
 - 族群大小 (Population size)
 
 --------------------------------------------
-在GA中會透過所謂的基因操作 (Genetic operations) - 交配及突變，來產生子代，也就是產生新的潛在解 (當然也是有可能產生重複的解)。
+在GA中會透過所謂的基因操作 (Genetic operations) - 交配及突變，來產生子代，也就是產生新的潛在解 (當然也是有可能產生重複的解)，並且期望可以達到探索 (exploration) 的效果，增加解的多樣性，希望能跳脫局部解，進而找到更多更優秀的解。
+
 ### :arrow_down_small: 交配 (Crossover) <br>
 
 通常在進行交配時，會先根據所設定的交配率 (Crossover rate) 來決定任意兩條染色體是否要做交配的動作，以產生子代。<br>
@@ -103,6 +104,16 @@
 
 
 ### :arrow_down_small: 突變 (Mutation) <br>
+
+為了增加解的多樣性，避免陷入局部解，對於每個染色體，會根據所設定的突變率，來決定某個染色體是否要進行突變，透過隨機的方式來改變單一染色體內的基因，一個常見的方式，即為針對單一染色體，隨機挑選染色體中的若干個基因進行互換，如下圖所示：
+
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/7.png" width="390" height="215">
+</div>
+<br> 
+
+---------------------------------
 
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
