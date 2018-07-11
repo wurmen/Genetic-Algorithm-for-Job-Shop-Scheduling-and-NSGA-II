@@ -67,7 +67,7 @@
 
 **1. 單點交配 (Single point crossover)** <br>
 
-隨意選取某個基因位置，並以此基因位置將親代染色體切成兩段，接著將某一段固定，另一段互相交換，產生兩個新的子代。
+隨意選取某個基因位置當成交配點，並以此基因位置將親代染色體切成兩段，接著將某段固定，另一段互相交換，產生兩個新的子代。
 <br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/4.png" width="450" height="355">
@@ -76,7 +76,7 @@
 
 **2. 多點交配 (Multi-point crossover)** <br>
 
-多點交配的概念與單點交配相似，只是變成一次選取多個基因位置點進行交配，接著依照個人設定，固定某幾段，其餘的即進行交換，以產生新的子代。
+多點交配的概念與單點交配相似，只是變成一次選取多個基因位置當成交配點，接著依照個人設定，固定某幾段，其餘的進行交換，以產生新的子代。
 
 <br>
 <div align=center>
@@ -85,6 +85,13 @@
 <br>
 
 **3. 均勻交配 (Uniform crossover)**<br>
+
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/6.png" width="460" height="325">
+</div>
+<br>
+
 
 通常在進行交配時，會根據所設定的交配率 (Crossover rate)來決定任意兩條染色體是否要做交配的動作，以產生子代。
 
