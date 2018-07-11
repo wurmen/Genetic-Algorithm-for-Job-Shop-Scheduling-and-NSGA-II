@@ -118,6 +118,9 @@
 
 ---------------------------------
 
+### :arrow_down_small: 適應值計算 (Fitness computation) <br>
+### :arrow_down_small: 選擇 (Selection) <br>
+
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
 - Goldberg, D. E. (1989). Genetic Algorithms in Search, Optimization and Machine Learning. Addison-Wesley Longman Publishing Co., Inc. Boston, MA.
