@@ -139,7 +139,6 @@
 
 :balloon: Step 1. 計算所有要被選擇染色體的適應值總和 F
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/8.png" width="250" height="150">
-<br>
 
 :balloon: Step 2. 對每個染色體 v<sub>k</sup></sub>，計算其選擇機率 p<sub>k</sup></sub>
 
