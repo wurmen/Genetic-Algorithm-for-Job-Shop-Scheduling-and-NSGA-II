@@ -152,15 +152,22 @@
 :balloon: Step 4. 從區間 [ 0 , 1 ] 中，隨機產生一個數字 r
 
 
-:balloon: Step 5. 如果 r <= q<sub>1</sup></sub>，則選擇第一條染色體，否則，當q<sub>k-1</sup></sub> < r < q<sub>k</sup></sub>，則選擇第k個染色體v<sub>k</sup></sub>
+:balloon: Step 5. 如果 r <= q<sub>1</sup></sub>，則選擇第一條染色體，否則，當q<sub>k-1</sup></sub> < r < q<sub>k</sup></sub>，則選擇第 k 個染色體 v<sub>k</sup></sub>
 
 
 :balloon: Step 6. 回到 Step 4 ，直到選擇的染色體數量，達到所設定的族群大小
 
 **2. 競爭選取法 (Tournament selection)** <br>
 
+
+
 #### :unlock: 本步驟所需注意或設定的參數
 - 選擇機制 (Selection mechanism)
+
+----------------------------------------
+### :arrow_down_small: 終止條件 (Termination condition)<br>
+
+
 
 
 ## :black_nib: Reference
