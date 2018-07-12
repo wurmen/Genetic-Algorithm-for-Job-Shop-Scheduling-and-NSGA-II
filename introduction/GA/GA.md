@@ -13,8 +13,6 @@
 
 ## :black_nib: GA 流程 (Procedure)
 下圖為GA的流程圖 (flow chart)，接著將會對每個步驟進行說明
-<br>
-<div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/1.png" width="250" height="500">
 </div>
 <br>
