@@ -24,7 +24,7 @@ job_priority_duedate_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Priority",
 # raw_input is used in python 2
 population_size=int(input('Please input the size of population: ') or 20) # default value is 20
 crossover_rate=float(input('Please input the size of Crossover Rate: ') or 0.8) # default value is 0.8
-mutation_rate=float(input('Please input the size of Mutation Rate: ') or 0.3) # default value is 0.5
+mutation_rate=float(input('Please input the size of Mutation Rate: ') or 0.3) # default value is 0.3
 mutation_selection_rate=float(input('Please input the mutation selection rate: ') or 0.4)
 num_mutation_jobs=round(num_job*num_mc*mutation_selection_rate)
 num_iteration=int(input('Please input number of iteration: ') or 1000) # default value is 1000
