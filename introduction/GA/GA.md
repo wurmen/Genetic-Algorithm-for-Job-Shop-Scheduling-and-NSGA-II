@@ -13,6 +13,9 @@
 
 ## :black_nib: GA 流程 (Procedure)
 下圖為GA的流程圖 (flow chart)，接著將會對每個步驟進行說明
+
+<br>
+<div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/1.png" width="250" height="500">
 </div>
 <br>
@@ -159,7 +162,7 @@
 
 **2. 競爭選取法 (Tournament selection)** <br>
 
-
+隨意從族群中挑選若干個染色體出來，比較它們的適應值，從中選擇具有最佳適應值的染色體出來，重複執行上述動作，直到選擇的染色體數量，達到所設定的族群大小。 (一次要挑選出來比較的染色體數，可依個人自行設定一個合理的挑選個數)
 
 #### :unlock: 本步驟所需注意或設定的參數
 - 選擇機制 (Selection mechanism)
@@ -167,6 +170,7 @@
 ----------------------------------------
 ### :arrow_down_small: 終止條件 (Termination condition)<br>
 
+通常會設定一個迭代次數 (Number of iterations)來當作終止條件，一旦尚未達到所設定的次數，則會將最後一步驟所產生的新族群，回到突變與交配的步驟，再依序往下執行其他步驟，不斷的循環，直到到達設定的迭代次數，最後即可得到在這所有迭代中獲得的最佳解。
 
 
 
