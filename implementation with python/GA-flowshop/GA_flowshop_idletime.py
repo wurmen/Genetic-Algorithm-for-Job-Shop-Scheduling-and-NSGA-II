@@ -19,12 +19,12 @@ pt = pt_tmp.as_matrix().tolist()
 num_m=5
 num_job=len(pt)
 # raw_input is used in python 2
-population_size=int(input('Please input the size of population: ') or 30) # default value is 20
+population_size=int(input('Please input the size of population: ') or 30) # default value is 30
 crossover_rate=float(input('Please input the size of Crossover Rate: ') or 0.8) # default value is 0.8
 mutation_rate=float(input('Please input the size of Mutation Rate: ') or 0.2) # default value is 0.2
 mutation_selection_rate=float(input('Please input the mutation selection rate: ') or 0.2)
 num_mutation_jobs=round(num_job*mutation_selection_rate)
-num_iteration=int(input('Please input number of iteration: ') or 2000) # default value is 100
+num_iteration=int(input('Please input number of iteration: ') or 2000) # default value is 2000
     
 start_time = time.time()
 
