@@ -24,12 +24,12 @@ p=[10,10,13,4,9,4,8,15,7,1,9,3,15,9,11,6,5,14,18,3]
 d=[50,38,49,12,20,105,73,45,6,64,15,6,92,43,78,21,15,50,150,99]
 w=[10,5,1,5,10,1,5,10,5,1,5,10,10,5,1,10,5,5,1,5]
 # raw_input is used in python 2
-population_size=int(input('Please input the size of population: ') or 30) # default value is 20
+population_size=int(input('Please input the size of population: ') or 30) # default value is 30
 crossover_rate=float(input('Please input the size of Crossover Rate: ') or 0.8) # default value is 0.8
-mutation_rate=float(input('Please input the size of Mutation Rate: ') or 0.01) # default value is 0.5
+mutation_rate=float(input('Please input the size of Mutation Rate: ') or 0.1) # default value is 0.1
 mutation_selection_rate=float(input('Please input the mutation selection rate: ') or 0.5)
 num_mutation_jobs=round(num_job*mutation_selection_rate)
-num_iteration=int(input('Please input number of iteration: ') or 2000) # default value is 100
+num_iteration=int(input('Please input number of iteration: ') or 2000) # default value is 2000
 
 
 start_time = time.time()
