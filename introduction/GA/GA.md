@@ -172,7 +172,8 @@
 
 通常會設定一個迭代次數 (Number of iterations)來當作終止條件，一旦尚未達到所設定的次數，則會將最後一步驟所產生的新族群，回到突變與交配的步驟，再依序往下執行其他步驟，不斷的循環，直到到達設定的迭代次數，最後即可得到在這所有迭代中獲得的最佳解。
 
-
+#### :unlock: 本步驟所需注意或設定的參數
+- 迭代次數 (Number of iterations)
 
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
