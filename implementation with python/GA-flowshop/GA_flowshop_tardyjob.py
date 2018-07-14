@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 '''
 Author: cheng-man wu
 LinkedIn: www.linkedin.com/in/chengmanwu
@@ -143,39 +143,40 @@ print("average tardiness:%f"%(Tbest/num_job))
 print("number of tardy:%d"%num_tardy)
 print('the elapsed time:%s'% (time.time() - start_time))
 
+'''--------plot gantt chart-------'''
+import pandas as pd
+import plotly.plotly as py
+import plotly.figure_factory as ff
+import plotly.offline as offline
+import datetime
 
-#'''--------plot gantt chart-------'''
-#import pandas as pd
-#import plotly.plotly as py
-#import plotly.figure_factory as ff
-#import datetime
-#
-#j_keys=[j for j in range(num_job)]
-#j_count={key:0 for key in j_keys}
-#m_count=0
-#j_record={}
-#for i in sequence_best:
-#    gen_t=int(p[i])
-#    j_count[i]=j_count[i]+gen_t
-#    m_count=m_count+gen_t
-#    
-#    if m_count<j_count[i]:
-#        m_count=j_count[i]
-#    elif m_count>j_count[i]:
-#        j_count[i]=m_count
-#    start_time=str(datetime.timedelta(seconds=j_count[i]-p[i])) # convert seconds to hours, minutes and seconds
-#
-#    end_time=str(datetime.timedelta(seconds=j_count[i]))
-#    j_record[i]=[start_time,end_time]
-#        
-#
-#df=[]
-#for j in j_keys:
-#    df.append(dict(Task='Machine', Start='2018-07-14 %s'%(str(j_record[j][0])), Finish='2018-07-14 %s'%(str(j_record[j][1])),Resource='Job %s'%(j+1)))
-#
-#colors={}
-#for i in j_keys:
-#    colors[str(i)]='rgb(%s,%s,%s)'%(255/(i+1),5+12*i,50+10*i)
-# 
-#fig = ff.create_gantt(df,colors=colors,index_col='Resource', show_colorbar=True, group_tasks=True, showgrid_x=True)
-#py.iplot(fig, filename='GA_flow_shop_scheduling_tardyjob', world_readable=True)
+j_keys=[j for j in range(num_job)]
+j_count={key:0 for key in j_keys}
+m_count=0
+j_record={}
+for i in sequence_best:
+   gen_t=int(p[i])
+   j_count[i]=j_count[i]+gen_t
+   m_count=m_count+gen_t
+   
+   if m_count<j_count[i]:
+       m_count=j_count[i]
+   elif m_count>j_count[i]:
+       j_count[i]=m_count
+   start_time=str(datetime.timedelta(seconds=j_count[i]-p[i])) # convert seconds to hours, minutes and seconds
+
+   end_time=str(datetime.timedelta(seconds=j_count[i]))
+   j_record[i]=[start_time,end_time]
+       
+
+df=[]
+for j in j_keys:
+   df.append(dict(Task='Machine', Start='2018-07-14 %s'%(str(j_record[j][0])), Finish='2018-07-14 %s'%(str(j_record[j][1])),Resource='Job %s'%(j+1)))
+
+# colors={}
+# for i in j_keys:
+#     colors['Job %s'%(i+1)]='rgb(%s,%s,%s)'%(255/(i+1)+0*i,5+12*i,50+10*i)
+
+fig = ff.create_gantt(df, colors=['#008B00','#FF8C00','#E3CF57','#0000CD','#7AC5CD','#ED9121','#76EE00','#6495ED','#008B8B','#A9A9A9','#A2CD5A','#9A32CD','#8FBC8F','#EEC900','#EEE685','#CDC1C5','#9AC0CD','#EEA2AD','#00FA9A','#CDB38B'], index_col='Resource', show_colorbar=True, group_tasks=True, showgrid_x=True)
+py.iplot(fig, filename='GA_flow_shop_scheduling_tardyjob', world_readable=True)
+
