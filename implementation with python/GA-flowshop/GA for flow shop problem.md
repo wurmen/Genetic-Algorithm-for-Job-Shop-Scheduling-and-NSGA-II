@@ -118,6 +118,11 @@ for i in range(population_size):
 1. 透過隨機選擇方式，將基因數一半的位置設為固定不變，以下圖為例，共有六個工件進行排序，生成兩個親代，在此選定2、5、6為工件順序不變的位置。
 2. 將 Parent 1 工件不變的位置，複製產生 Child 2 ，接著 Child 2 與 Parent 2 進行比對。
 3. 將 parent 2 與child2不重複的工件，依序填入 Child 2 剩餘的位置，形成新的子代。 Child 1 的形成方式如 Child 2 所示。
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/5.png" width="400" height="325">
+</div>
+<br>
 
 ```python
     '''-------- crossover --------'''
