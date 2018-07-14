@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Author: cheng-man wu
 LinkedIn: www.linkedin.com/in/chengmanwu
@@ -14,7 +14,7 @@ import time
 
 ''' ================= initialization setting ======================'''
 #pt_tmp=pd.read_excel("20x5_flowshop.xlsx",sheet_name="S1",index_col =[0])
-pt_tmp=pd.read_excel("flow_shop.xlsx",sheet_name="S1",index_col =[0])
+pt_tmp=pd.read_excel("9x5_flowshop.xlsx",sheet_name="S1",index_col =[0])
 pt = pt_tmp.as_matrix().tolist()
 num_m=5
 num_job=len(pt)
@@ -184,12 +184,12 @@ print('the elapsed time:%s'% (time.time() - start_time))
 #        df.append(dict(Task=m, Start='2018-06-24 %s'%(str(j_record[(j,m)][0])), Finish='2018-06-24 %s'%(str(j_record[(j,m)][1])),Resource='%s'%(j)))
 #colors={}
 #for i in j_keys:
-##    colors[str(i)]='rgb(%s,%s,%s)'%(255/(i+1)+0*i,25+25*i,50+20*i)
+#    colors[str(i)]='rgb(%s,%s,%s)'%(255/(i+1)+0*i,25+25*i,50+20*i) ## 9x5 flow shop problem
 #
-#    colors[str(i)]='rgb(%s,%s,%s)'%(255/(i+1),5+12*i,100/(i+1))
+##    colors[str(i)]='rgb(%s,%s,%s)'%(255/(i+1),5+12*i,100/(i+1)) ## 20x5 flow shop problem
 #    
 #fig = ff.create_gantt(df,colors=colors, index_col='Resource', show_colorbar=True, group_tasks=True, showgrid_x=True)
-#py.iplot(fig, filename='GA_job_shop_scheduling_20x5_7', world_readable=True)
-##py.iplot(fig, filename='GA_job_shop_scheduling_9x5_new', world_readable=True)
+#py.iplot(fig, filename='GA_job_shop_scheduling_9x5', world_readable=True)  ## 9x5 flow shop problem
+##py.iplot(fig, filename='GA_job_shop_scheduling_20x5', world_readable=True) ### 20x5 flow shop problem
 
 
