@@ -40,7 +40,7 @@ Job 1->Job 2->Job 3，因此可得到如右下圖的甘特圖
 ### :arrow_down_small: 排程目標 <br>
 由於本範例的目標為最小化總加權延遲 (Total weighted tardiness)，因此除了必須知道每個工件在每台機台上的加工時間外，還必須知道每個工件的到期日及權重。<br>
 
-總加權延遲時間的公式如下：<br>
+:bulb: 總加權延遲時間的公式如下：<br>
 
 <c<sub>i</sup></sub>：工件 i 的完工時間(Completion time)、d<sub>i</sup></sub>：工件 i 的到期日(Due date)、T<sub>i</sup></sub>：工件 i 的延遲時間(Tardiness time)、<br>
 w<sub>i</sup></sub>：工件 i 的權重(Weight) >
@@ -108,11 +108,17 @@ best_list,best_obj=[],[]
 population_list=[]
 for i in range(population_size):
     random_num=list(np.random.permutation(num_job)) # generate a random permutation of 0 to num_job-1
-    population_list.append(nxm_random_num) # add to the population_list
+    population_list.append(nxm_random_num) # add to the population_list2.
 
 ```
 
 ### :arrow_down_small: 交配 <br>
+
+這裡的交配方式是透過指定位置的方式進行交配，執行的步驟如下：
+1. 透過隨機選擇方式，將基因數一半的位置設為固定不變，以下圖為例，共有六個工件進行排序，生成兩個親代，在此選定2、5、6為工件順序不變的位置。
+2. 將 Parent 1 工件不變的位置，複製產生 Child 2 ，接著 Child 2 與 Parent 2 進行比對。
+3. 將 parent 2 與child2不重複的工件，依序填入 Child 2 剩餘的位置，形成新的子代。 Child 1 的形成方式如 Child 2 所示。
+
 ```python
     '''-------- crossover --------'''
     parent_list=population_list[:]
