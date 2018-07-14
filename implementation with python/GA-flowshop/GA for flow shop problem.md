@@ -5,9 +5,9 @@
 *2018/07*
 <br>
 
-## :black_nib: 問題描述 <br>
+## :black_nib: 前言 <br>
 
-這裡要來說明如何運用 GA 來求解 flow shop的問題，以下將先對 flow shop 問題做個簡介，說明一下編碼原則，接著根據每個程式區塊進行說明
+這裡要來說明如何運用 GA 來求解 flow shop的問題，以下將先對 flow shop 問題做個簡介，接著描述本範例的求解問題以及編碼原則說明，最後會根據每個程式區塊進行概念上的講解
 
 ### :arrow_down_small: 什麼是 flow shop 問題? <br>
 
@@ -15,7 +15,7 @@
 
 <br>
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/1.png" width="450" height="200">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/1.png" width="450" height="180">
 </div>
 <br>
 
@@ -24,10 +24,12 @@ Job 1->Job 2->Job 3，因此可得到如右下圖的甘特圖
 
 <br>
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/2.png" width="550" height="280">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/2.png" width="570" height="250">
 </div>
 <br>
 
+## :black_nib: 問題描述 <br>
+本範例是一個具有20個工件的單機台 flow shop 問題，排程目標為**最小化總加權延遲 (Total weighted tardiness)** ，工件資訊如下圖所示
 ### :arrow_down_small: 本範例 flow shop 的排程目標 <br>
 
 在本文章中所示範的 flow shop 問題，**目標為最小化總加權延遲 (Total weighted tardiness)**，因此除了必須知道每個工件在每台機台上的加工時間外，還必須知道每個工件的到期日及權重。<br>
@@ -58,6 +60,8 @@ chromosome 2 => [4,2,0,1,3] <br>
 
 ## :black_nib: 程式說明 <br>
 
+這裡主要針對程式中幾個重要區塊來說明，有些細節並無放入，如有需要請參考[完整程式碼](https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/GA_flowshop_tardyjob.py)或範例檔案
+
 ### :arrow_down_small: 導入所需套件 <br>
 
 ```python
@@ -68,8 +72,8 @@ import time
 ```
 
 ### :arrow_down_small: 初始設定 <br>
+此區主要包含讀檔以及一些參數上的設定
 ```python
-
 ''' ================= initialization setting ======================'''
 num_job=20 # number of jobs
 
@@ -90,17 +94,16 @@ start_time = time.time()
 ```
 
 ### :arrow_down_small: 產生初始解 <br>
+根據上述所設定的族群大小，透過隨機的方式，產生初始族群
 ```python
 '''----- generate initial population -----'''
 Tbest=999999999999999
 best_list,best_obj=[],[]
 population_list=[]
 for i in range(population_size):
-    nxm_random_num=list(np.random.permutation(num_job)) # generate a random permutation of 0 to num_job*num_mc-1
+    random_num=list(np.random.permutation(num_job)) # generate a random permutation of 0 to num_job-1
     population_list.append(nxm_random_num) # add to the population_list
-        
-for n in range(num_iteration):
-    Tbest_now=99999999999 
+
 ```
 
 ### :arrow_down_small: 交配 <br>
