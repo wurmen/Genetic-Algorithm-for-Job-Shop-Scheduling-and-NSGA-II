@@ -1,21 +1,74 @@
-# -*- coding: utf-8 -*-
-'''
-Author: cheng-man wu
-LinkedIn: www.linkedin.com/in/chengmanwu
-Github: https://github.com/wurmen
+# Solving flow shop scheduling problem with genetic algorithm
 
-==============================================================
-Soving single-machine total weighted tardiness problem. 
-The objective function is to minimize the total weighted tardiness. 
-==============================================================
+*POLab* <br>
+*[cheng-man wu](https://www.linkedin.com/in/chengmanwu)*<br>
+*2018/07*
+<br>
 
-'''
+## :black_nib: 問題描述 <br>
+
+這裡要來說明如何運用 GA 來求解 flow shop的問題，以下將先對 flow shop 問題做個簡介，說明一下編碼原則，接著根據每個程式區塊進行說明
+
+### :arrow_down_small: 什麼是 flow shop 問題? <br>
+
+簡單來說，flow shop 問題就是有 n 個工件以及 m 台機台，每個工件在機台的加工順序都一樣，如下圖所示，工件1先進入機台1加工，再到機台2加工，而工件2跟隨著工件1的腳步，按照同樣的機台順序加工，其他工件以此類推。
+
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/1.png" width="450" height="200">
+</div>
+<br>
+
+因此假設現在有3個工件2台機台，每個工件在每台機台的加工時間，如左下圖所示，工件的加工順序為先到機台A加工再到機台B，假設得到的排程結果為<br>
+Job 1->Job 2->Job 3，因此可得到如右下圖的甘特圖
+
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/2.png" width="550" height="280">
+</div>
+<br>
+
+### :arrow_down_small: 本範例 flow shop 的排程目標 <br>
+
+在本文章中所示範的 flow shop 問題，**目標為最小化總加權延遲 (Total weighted tardiness)**，因此除了必須知道每個工件在每台機台上的加工時間外，還必須知道每個工件的到期日及權重。<br>
+
+總加權延遲時間的公式如下：<br>
+
+<c<sub>i</sup></sub>：工件 i 的完工時間(Completion time)、d<sub>i</sup></sub>：工件 i 的到期日(Due date)、T<sub>i</sup></sub>：工件 i 的延遲時間(Tardiness time)、<br>
+w<sub>i</sup></sub>：工件 i 的權重(Weight) >
+- 首先計算每個工件的延遲時間，如果提早做完，則延遲時間為0 <br>
+
+**T<sub>i</sup></sub> = max {0,c<sub>i</sup></sub> - d<sub>i</sup></sub>}**
+
+- 計算所有工件的加權延遲時間總和，從公式我們可以知道，當工件的權重越大，我們要盡可能的準時完成那些權重較大的工件，不然會導致總加權延遲時間太大，對於這樣的排程目標問題來說，這就不是一個好的排程
+
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/3.png" width="80" height="60">
+
+另外，這裡還有提供另一個版本的 flow shop 程式，跟本文主要的差別在於求解目標的不同，另一版本的目標為最小化總閒置時間 (Idle time)，也就是上面範例甘特圖中，灰色區域的部分，期望排出來的排程，可以盡可能減少總機台的閒置時間。
+
+
+### :arrow_down_small: 編碼原則  <br>
+
+這裡的編碼方式很簡單，每個染色體就表示一組排程結果，因此，如果 flow shop 的問題中，共有五個工件要排，則每個染色體就由五個基因所組成，每個基因即代表某個工件，在程式裡，會透過 list 來儲存每個染色體，如下面所示：<br>
+
+chromosome 1 => [0,1,2,3,4] <br>
+chromosome 2 => [1,2,0,3,4] <br>
+chromosome 2 => [4,2,0,1,3] <br>
+........<br>
+
+## :black_nib: 程式說明 <br>
+
+### :arrow_down_small: 導入所需套件 <br>
+
+```python
 # importing required modules
-#import os
 import pandas as pd
 import numpy as np
 import time
+```
 
+### :arrow_down_small: 初始設定 <br>
+```python
 
 ''' ================= initialization setting ======================'''
 num_job=20 # number of jobs
@@ -34,17 +87,24 @@ num_iteration=int(input('Please input number of iteration: ') or 2000) # default
 
 start_time = time.time()
 
-'''==================== main code ==============================='''
+```
+
+### :arrow_down_small: 產生初始解 <br>
+```python
 '''----- generate initial population -----'''
 Tbest=999999999999999
 best_list,best_obj=[],[]
 population_list=[]
 for i in range(population_size):
-    random_num=list(np.random.permutation(num_job)) # generate a random permutation of 0 to num_job-1
-    population_list.append(random_num) # add to the population_list
+    nxm_random_num=list(np.random.permutation(num_job)) # generate a random permutation of 0 to num_job*num_mc-1
+    population_list.append(nxm_random_num) # add to the population_list
         
 for n in range(num_iteration):
-    Tbest_now=99999999999           
+    Tbest_now=99999999999 
+```
+
+### :arrow_down_small: 交配 <br>
+```python
     '''-------- crossover --------'''
     parent_list=population_list[:]
     offspring_list=population_list[:]
@@ -71,8 +131,10 @@ for n in range(num_iteration):
                 child_2[child_2.index('na')]=c2[i]
             offspring_list[S[2*m]]=child_1[:]
             offspring_list[S[2*m+1]]=child_2[:]
-        
-    '''--------mutatuon--------'''   
+```
+### :arrow_down_small: 突變 <br>
+```python
+'''--------mutatuon--------'''   
     for m in range(len(offspring_list)):
         mutation_prob=np.random.rand()
         if mutation_rate >= mutation_prob:
@@ -82,8 +144,9 @@ for n in range(num_iteration):
                 offspring_list[m][m_chg[i]]=offspring_list[m][m_chg[i+1]] # displacement
             
             offspring_list[m][m_chg[num_mutation_jobs-1]]=t_value_last # move the value of the first mutation position to the last mutation position
-    
-    
+```
+### :arrow_down_small: 適應值計算 <br>
+```python
     '''--------fitness value(calculate tardiness)-------------'''
     total_chromosome=parent_list[:]+offspring_list[:] # combine parent and offspring chromosomes
     chrom_fitness,chrom_fit=[],[]
@@ -97,7 +160,10 @@ for n in range(num_iteration):
         chrom_fitness.append(1/tardiness)
         chrom_fit.append(tardiness)
         total_fitness=total_fitness+chrom_fitness[i]
-    
+```
+
+### :arrow_down_small: 選擇  <br>
+```python
     '''----------selection----------'''
     pk,qk=[],[]
     
@@ -119,7 +185,10 @@ for n in range(num_iteration):
             for j in range(0,population_size*2-1):
                 if selection_rand[i]>qk[j] and selection_rand[i]<=qk[j+1]:
                     population_list[i][:]=total_chromosome[j+1][:]
-            
+```
+
+### :arrow_down_small: 比較 <br>
+```python
     '''----------comparison----------'''
     for i in range(population_size*2):
         if chrom_fit[i]<Tbest_now:
@@ -136,13 +205,20 @@ for n in range(num_iteration):
         job_sequence_ptime=job_sequence_ptime+p[sequence_best[k]]
         if job_sequence_ptime>d[sequence_best[k]]:
             num_tardy=num_tardy+1
+```
+
+### :arrow_down_small: 結果 <br>
+```python
 '''----------result----------'''
 print("optimeal sequence",sequence_best)
 print("optimeal value:%f"%Tbest)
 print("average tardiness:%f"%(Tbest/num_job))
 print("number of tardy:%d"%num_tardy)
 print('the elapsed time:%s'% (time.time() - start_time))
+```
 
+### :arrow_down_small: 甘特圖 <br>
+```python
 '''--------plot gantt chart-------'''
 import pandas as pd
 import plotly.plotly as py
@@ -179,4 +255,4 @@ for j in j_keys:
 
 fig = ff.create_gantt(df, colors=['#008B00','#FF8C00','#E3CF57','#0000CD','#7AC5CD','#ED9121','#76EE00','#6495ED','#008B8B','#A9A9A9','#A2CD5A','#9A32CD','#8FBC8F','#EEC900','#EEE685','#CDC1C5','#9AC0CD','#EEA2AD','#00FA9A','#CDB38B'], index_col='Resource', show_colorbar=True, group_tasks=True, showgrid_x=True)
 py.iplot(fig, filename='GA_flow_shop_scheduling_tardyjob', world_readable=True)
-
+```
