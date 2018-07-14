@@ -40,8 +40,8 @@ Tbest=999999999999999
 best_list,best_obj=[],[]
 population_list=[]
 for i in range(population_size):
-    nxm_random_num=list(np.random.permutation(num_job)) # generate a random permutation of 0 to num_job*num_mc-1
-    population_list.append(nxm_random_num) # add to the population_list
+    random_num=list(np.random.permutation(num_job)) # generate a random permutation of 0 to num_job-1
+    population_list.append(random_num) # add to the population_list
         
 for n in range(num_iteration):
     Tbest_now=99999999999           
