@@ -1,6 +1,6 @@
 # Genetic Algorithm (GA)
 *POLab* <br>
-*[cheng-man wu](https://www.linkedin.com/feed/?trk=nav_back_to_linkedin)*<br>
+*[cheng-man wu](https://www.linkedin.com/in/chengmanwu)*<br>
 *2018/07*
 <br>
 
