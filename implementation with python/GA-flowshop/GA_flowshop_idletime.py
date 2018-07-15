@@ -79,7 +79,7 @@ for n in range(num_iteration):
     
     
     '''--------fitness value(calculate idle time)-------------'''
-    total_chromosome=parent_list[:]+offspring_list[:] # combine parent and offspring chromosomes
+    total_chromosome=parent_list[:]+offspring_list[:] # parent and offspring chromosomes combination
     chrom_fitness,chrom_fit=[],[]
     total_fitness=0
     s,d,D={},{},{}
