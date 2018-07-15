@@ -1,7 +1,7 @@
 # Genetic Algorithm (GA)
 *POLab* <br>
 *[cheng-man wu](https://www.linkedin.com/in/chengmanwu)*<br>
-*2018/07*
+*2018/07/13*
 <br>
 
 ## :black_nib: GA 背景 (Background)
@@ -207,3 +207,5 @@
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
 - Goldberg, D. E. (1989). Genetic Algorithms in Search, Optimization and Machine Learning. Addison-Wesley Longman Publishing Co., Inc. Boston, MA.
+- Dr. Chia-Yen Lee  (2017), Meta-Heuristic Algorithms-Genetic Algorithms & Particle Swarm Optimization, Intelligent Manufacturing Systems course
+
