@@ -10,5 +10,6 @@
 
 |更新時間|文章|連結|
 |---|---|---|
-|2018|GA|Documentation / code / Folder|
+|2018|GA For Flow Shop|Documentation / [Example](https://wurmen.github.io/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/implementation%20with%20python/GA-flowshop/Example.html) / [code](https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/GA_flowshop_tardyjob.py) / [Folder](https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/tree/master/implementation%20with%20python/GA-flowshop)|
+|2018|GA For Job Shop|Documentation / Example / code / Folder|
 |2018|NSGA-II|Documentation / code / Folder|
