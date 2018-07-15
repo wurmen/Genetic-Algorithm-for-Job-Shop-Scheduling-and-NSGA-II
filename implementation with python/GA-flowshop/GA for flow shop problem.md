@@ -153,6 +153,16 @@ for i in range(population_size):
             offspring_list[S[2*m+1]]=child_2[:]
 ```
 ### :arrow_down_small: 突變 <br>
+此方法是透過基因位移的方式進行突變，突變方式如下:<br>
+1. 依據 mutation selection rate 決定染色體中有多少百分比的基因要進行突變，假設每條染色體有六個基因， mutation selection rate 為0.5，則有3個基因要進行突變。
+2. 隨機選定要位移的基因，假設選定5、2、6 (在此表示該位置下的基因要進行突變)
+3. 進行基因移轉，移轉方式如圖所示。
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/6.png" width="450" height="250">
+</div>
+<br>
+
 ```python
 '''--------mutatuon--------'''   
     for m in range(len(offspring_list)):
@@ -168,7 +178,7 @@ for i in range(population_size):
 ### :arrow_down_small: 適應值計算 <br>
 ```python
     '''--------fitness value(calculate tardiness)-------------'''
-    total_chromosome=parent_list[:]+offspring_list[:] # combine parent and offspring chromosomes
+    total_chromosome=parent_list[:]+offspring_list[:] # parent and offspring chromosomes combination
     chrom_fitness,chrom_fit=[],[]
     total_fitness=0
     for i in range(population_size*2):
@@ -276,3 +286,6 @@ for j in j_keys:
 fig = ff.create_gantt(df, colors=['#008B00','#FF8C00','#E3CF57','#0000CD','#7AC5CD','#ED9121','#76EE00','#6495ED','#008B8B','#A9A9A9','#A2CD5A','#9A32CD','#8FBC8F','#EEC900','#EEE685','#CDC1C5','#9AC0CD','#EEA2AD','#00FA9A','#CDB38B'], index_col='Resource', show_colorbar=True, group_tasks=True, showgrid_x=True)
 py.iplot(fig, filename='GA_flow_shop_scheduling_tardyjob', world_readable=True)
 ```
+## :black_nib: Reference <br>
+- António Ferrolho and Manuel Crisóstomo. “Single Machine Total Weighted Tardiness Problem with Genetic Algorithms” 
+- N. Liu, Mohamed A. Abdelrahman, and Snni Ramaswamy. “A Genetic Algorithm for the Single Machine Total Weighted Tardiness Problem”
