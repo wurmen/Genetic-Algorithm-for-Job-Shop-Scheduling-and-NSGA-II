@@ -31,8 +31,8 @@ num_iteration=int(input('Please input number of iteration: ') or 1000) # default
 
 # speed up the data search
 # Below code can also be  written "pt = pt_tmp.as_matrix().tolist()"
-pt=[list(pt_tmp.iloc[i]) for i in range(num_job)]
-ms=[list(ms_tmp.iloc[i]) for i in range(num_job)]
+pt=[list(map(int, pt_tmp.iloc[i])) for i in range(num_job)]
+ms=[list(map(int,ms_tmp.iloc[i])) for i in range(num_job)]
 job_priority_duedate=[list(job_priority_duedate_tmp.iloc[i]) for i in range(num_job)]
 start_time = time.time()
 '''===========function==============='''
