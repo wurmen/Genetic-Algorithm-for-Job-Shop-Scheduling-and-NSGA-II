@@ -42,7 +42,7 @@ Job 1->Job 2->Job 3，因此可得到如右下圖的甘特圖
 
 :bulb: 總加權延遲時間的公式如下：<br>
 
-<c<sub>i</sup></sub>：工件 i 的完工時間(Completion time)、d<sub>i</sup></sub>：工件 i 的到期日(Due date)、T<sub>i</sup></sub>：工件 i 的延遲時間(Tardiness time)、<br>
+<c<sub>i</sup></sub>：工件 i 的完工時間 (Completion time)、d<sub>i</sup></sub>：工件 i 的到期日 (Due date)、T<sub>i</sup></sub>：工件 i 的延遲時間 (Tardiness time)、<br>
 w<sub>i</sup></sub>：工件 i 的權重(Weight) >
 - 首先計算每個工件的延遲時間，如果提早做完，則延遲時間為0 <br>
 
@@ -176,6 +176,7 @@ for i in range(population_size):
             offspring_list[m][m_chg[num_mutation_jobs-1]]=t_value_last # move the value of the first mutation position to the last mutation position
 ```
 ### :arrow_down_small: 適應值計算 <br>
+計算每個染色體也就是每個排程結果的總加權延遲，並將其記錄，以利後續選擇時能比較
 ```python
     '''--------fitness value(calculate tardiness)-------------'''
     total_chromosome=parent_list[:]+offspring_list[:] # parent and offspring chromosomes combination
@@ -193,6 +194,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 選擇  <br>
+這裡採用輪盤法 (Roulette wheel) 的選擇機制
 ```python
     '''----------selection----------'''
     pk,qk=[],[]
@@ -218,6 +220,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 比較 <br>
+將每一輪找到的最好的解 (Tbest_now) 跟目前找到的解 (Tbest) 進行比較，一旦這一輪的解比目前為止找到的解還要好，就替代 Tbest 並記錄該解所得到的排程結果
 ```python
     '''----------comparison----------'''
     for i in range(population_size*2):
@@ -238,6 +241,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 結果 <br>
+等所有迭代次數結束後，會輸出在所有迭代中找到的最好排程結果 (sequence_best)、它的總加權延遲時間、每個工件平均加權延遲時間以及有多少工件延遲
 ```python
 '''----------result----------'''
 print("optimeal sequence",sequence_best)
