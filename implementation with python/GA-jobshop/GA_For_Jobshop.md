@@ -25,8 +25,9 @@ Jop shop 問題與 Flow shop 問題最大的不同在於，不像 Flow shop 問�
 - Processing time  
 <br>
 <div align=center>
-<img src="https://github.com/w urmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/2.png" width="650" height="300">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/2.png" width="650" height="300">
 </div>
+<br>
 <br>
 
 - Machine sequence 
