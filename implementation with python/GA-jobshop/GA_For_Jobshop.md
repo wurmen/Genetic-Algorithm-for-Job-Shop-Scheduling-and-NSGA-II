@@ -49,7 +49,7 @@ Jop shop 問題與 Flow shop 問題最大的不同在於，不像 Flow shop 問�
 
 ## :black_nib: 程式說明 <br>
 
-這裡主要針對程式中幾個重要區塊來說明，有些細節並無放入，如有需要請參考[完整程式碼]或[範例檔案]
+這裡主要針對程式中幾個重要區塊來說明，有些細節並無放入，如有需要請參考[完整程式碼](https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/GA_jobshop_makespan.py)或[範例檔案](https://wurmen.github.io/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/implementation%20with%20python/GA-jobshop/Example.html)
 
 ### :arrow_down_small: 導入所需套件 <br>
 
@@ -105,9 +105,6 @@ for i in range(population_size):
     population_list.append(nxm_random_num) # add to the population_list
     for j in range(num_gene):
         population_list[i][j]=population_list[i][j]%num_job # convert to job number format, every job appears m times
-        
-for n in range(num_iteration):
-    Tbest_now=99999999999
 
 ```
 
