@@ -118,7 +118,7 @@ for n in range(num_iteration):
   
     
     '''--------fitness value(calculate makespan)-------------'''
-    total_chromosome=parent_list[:]+offspring_list[:] # combine parent and offspring chromosomes
+    total_chromosome=parent_list[:]+offspring_list[:] # parent and offspring chromosomes combination
     chrom_fitness,chrom_fit=[],[]
     total_fitness=0
     for m in range(population_size*2):
