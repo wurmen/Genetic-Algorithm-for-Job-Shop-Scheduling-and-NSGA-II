@@ -220,7 +220,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 比較 <br>
-將每一輪找到的最好的解 (Tbest_now) 跟目前找到的解 (Tbest) 進行比較，一旦這一輪的解比目前為止找到的解還要好，就替代 Tbest 並記錄該解所得到的排程結果
+先比較每個染色體的總加權延遲 (chrom_fit) ，選出此輪找到的最好解 (Tbest_now) ，接著在跟目前為止找到的最好解 (Tbest) 進行比較，一旦這一輪的解比目前為止找到的解還要好，就替代 Tbest 並記錄該解所得到的排程結果
 ```python
     '''----------comparison----------'''
     for i in range(population_size*2):
@@ -241,7 +241,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 結果 <br>
-等所有迭代次數結束後，會輸出在所有迭代中找到的最好排程結果 (sequence_best)、它的總加權延遲時間、每個工件平均加權延遲時間以及有多少工件延遲
+等所有迭代次數結束後，會輸出在所有迭代中找到的最好排程結果 (sequence_best)、它的總加權延遲時間、每個工件平均加權延遲時間、有多少工件延遲以及程式執行時間
 ```python
 '''----------result----------'''
 print("optimeal sequence",sequence_best)
