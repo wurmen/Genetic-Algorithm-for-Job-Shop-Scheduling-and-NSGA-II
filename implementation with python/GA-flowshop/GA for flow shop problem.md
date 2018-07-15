@@ -33,7 +33,7 @@ Job 1->Job 2->Job 3，因此可得到如右下圖的甘特圖
 
 <br>
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/3.png" width="600" height="150">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/3.png" width="650" height="180">
 </div>
 <br>
 
