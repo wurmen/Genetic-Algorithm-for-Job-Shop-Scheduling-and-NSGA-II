@@ -144,18 +144,6 @@ for n in range(num_iteration):
         child_2[cutpoint[0]:cutpoint[1]]=parent_1[cutpoint[0]:cutpoint[1]]
         
         offspring_list.extend((child_1,child_2)) # append child chromosome to offspring list
-        
-    '''--------mutatuon--------'''   
-    for m in range(len(offspring_list)):
-        mutation_prob=np.random.rand()
-        if mutation_rate <= mutation_prob:
-            m_chg=list(np.random.choice(num_job*num_mc, num_mutation_jobs, replace=False)) # chooses the position to mutation
-            t_value_last=offspring_list[m][m_chg[0]] # save the value which is on the first mutation position
-            for i in range(num_mutation_jobs-1):
-                offspring_list[m][m_chg[i]]=offspring_list[m][m_chg[i+1]] # displacement
-            
-            offspring_list[m][m_chg[num_mutation_jobs-1]]=t_value_last # move the value of the first mutation position to the last mutation position
-    
     '''----------repairment-------------'''
     for m in range(population_size):
         job_count={}
@@ -183,7 +171,18 @@ for n in range(num_iteration):
                         job_count[chg_job][0]=job_count[chg_job][0]-1
                         job_count[less[d]][0]=job_count[less[d]][0]+1                    
                     if job_count[chg_job][0]==num_mc:
-                        break
+                        break        
+    
+    '''--------mutatuon--------'''   
+    for m in range(len(offspring_list)):
+        mutation_prob=np.random.rand()
+        if mutation_rate <= mutation_prob:
+            m_chg=list(np.random.choice(num_job*num_mc, num_mutation_jobs, replace=False)) # chooses the position to mutation
+            t_value_last=offspring_list[m][m_chg[0]] # save the value which is on the first mutation position
+            for i in range(num_mutation_jobs-1):
+                offspring_list[m][m_chg[i]]=offspring_list[m][m_chg[i+1]] # displacement
+            
+            offspring_list[m][m_chg[num_mutation_jobs-1]]=t_value_last # move the value of the first mutation position to the last mutation position   
                         
     
     '''--------fitness value(calculate  makespan and TWET)-------------'''
