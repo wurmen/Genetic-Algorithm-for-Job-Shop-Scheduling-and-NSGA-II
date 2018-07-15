@@ -106,7 +106,7 @@ start_time = time.time()
 ```
 
 ### :arrow_down_small: 產生初始解 <br>
-根據上述所設定的族群大小，透過隨機的方式，產生初始族群，每個染色體共有  個基因
+根據上述所設定的族群大小，透過隨機的方式，產生初始族群，每個染色體共有 10 x 10 = 100  個基因
 ```python
 '''----- generate initial population -----'''
 Tbest=999999999999999
@@ -181,7 +181,7 @@ for i in range(population_size):
 ```
 ### :arrow_down_small: 突變 <br>
 
-這裡採用的突變方式跟 Flow shop 的例子相同，是透過基因位移的方式進行突變，突變方式如下:<br>
+這裡採用的突變方式跟 [Flow shop](https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/GA%20for%20flow%20shop%20problem.md) 的例子相同，是透過基因位移的方式進行突變，突變方式如下:<br>
 1. 依據 mutation selection rate 決定染色體中有多少百分比的基因要進行突變，假設每條染色體有六個基因， mutation selection rate 為0.5，則有3個基因要進行突變。
 2. 隨機選定要位移的基因，假設選定5、2、6 (在此表示該位置下的基因要進行突變)
 3. 進行基因移轉，移轉方式如圖所示。
@@ -208,7 +208,7 @@ for i in range(population_size):
 
 計算每個染色體所形成的排程結果的完工時間，並將其記錄，以利後續選擇時能比較<br>
 
-:bulb: 這裡要注意的是，因為這是最小化的問題，因此每個染色體所算出的適應值，也就是完工時間，必須以倒數的方式記錄 (chrom_fitness)，這樣後面採用輪盤法時，才可以選到完工時間越小的染色體，不過這邊還是有另外紀錄每個染色體原本的完工時間 (chrom_fit)
+:bulb: 這裡要注意的是，因為這是最小化的問題，因此每個染色體所算出的適應值，也就是完工時間，必須以倒數的方式記錄 (chrom_fitness)，這樣後面採用輪盤法時，才可以選到完工時間越小的染色體，不過這邊還是有另外紀錄每個染色體原本的完工時間 (chrom_fit)，以利最後面再篩選此輪最佳解時，可直接比較
 
 ```python
     '''--------fitness value(calculate makespan)-------------'''
