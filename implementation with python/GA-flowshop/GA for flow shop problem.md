@@ -78,7 +78,7 @@ import time
 ```
 
 ### :arrow_down_small: 初始設定 <br>
-此區主要包含讀檔以及一些參數上的設定
+此區主要包含讀檔或是資料給定，以及一些參數上的設定
 ```python
 ''' ================= initialization setting ======================'''
 num_job=20 # number of jobs
