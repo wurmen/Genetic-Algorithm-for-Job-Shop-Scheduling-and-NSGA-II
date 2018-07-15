@@ -25,7 +25,7 @@ Jop shop 問題與 Flow shop 問題最大的不同在於，不像 Flow shop 問�
 - Processing time  
 <br>
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/2.png" width="650" height="300">
+<img src="https://github.com/w urmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/2.png" width="650" height="300">
 </div>
 <br>
 
@@ -105,7 +105,7 @@ start_time = time.time()
 ```
 
 ### :arrow_down_small: 產生初始解 <br>
-根據上述所設定的族群大小，透過隨機的方式，產生初始族群
+根據上述所設定的族群大小，透過隨機的方式，產生初始族群，每個染色體共有  個基因
 ```python
 '''----- generate initial population -----'''
 Tbest=999999999999999
@@ -121,11 +121,12 @@ for i in range(population_size):
 
 ### :arrow_down_small: 交配 <br>
 
+一開始會先產生一組用來選擇親代染色體的隨機序列，接著從序列中，兩個兩個抓出來，根據交配率來決定是否要進行交配，如果要，則採用雙點交配法，產生兩個子代，並取代原本的母代染色體
 
 
 ```python
     '''-------- two point crossover --------'''
-    parent_list=population_list[:]
+    parent_list=population_list[:] # preserve the original parent chromosomes
     offspring_list=population_list[:]
     S=list(np.random.permutation(population_size)) # generate a random sequence to select the parent chromosome to crossover
     
@@ -145,6 +146,7 @@ for i in range(population_size):
             offspring_list[S[2*m+1]]=child_2[:]
 ```
 ### :arrow_down_small: 修復 <br>
+本範例是一個 10 x 10 的 Job shop 問題，因此每個工件在染色體出現的次數為10次，但由於上面進行交配的動作，會導致有些染色體內的工件出現次數會小於10或大於10，而形成一個不可行的排程解，所以這裡必須針對不可行的染色體進行修復動作，使它成為一個可行排程
 
 ```python
     '''----------repairment-------------'''
@@ -178,6 +180,16 @@ for i in range(population_size):
 ```
 ### :arrow_down_small: 突變 <br>
 
+這裡採用的突變方式跟 Flow shop 的例子相同，是透過基因位移的方式進行突變，突變方式如下:<br>
+1. 依據 mutation selection rate 決定染色體中有多少百分比的基因要進行突變，假設每條染色體有六個基因， mutation selection rate 為0.5，則有3個基因要進行突變。
+2. 隨機選定要位移的基因，假設選定5、2、6 (在此表示該位置下的基因要進行突變)
+3. 進行基因移轉，移轉方式如圖所示。
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-flowshop/picture/6.png" width="450" height="250">
+</div>
+<br>
+
 ```python
 '''--------mutatuon--------'''   
     for m in range(len(offspring_list)):
@@ -192,6 +204,10 @@ for i in range(population_size):
   
 ```
 ### :arrow_down_small: 適應值計算 <br>
+
+計算每個染色體所形成的排程結果的完工時間，並將其記錄，以利後續選擇時能比較<br>
+
+:bulb: 這裡要注意的是，因為這是最小化的問題，因此每個染色體所算出的適應值，也就是完工時間，必須以倒數的方式記錄 (chrom_fitness)，這樣後面採用輪盤法時，才可以選到完工時間越小的染色體，不過這邊還是有另外紀錄每個染色體原本的完工時間 (chrom_fit)
 
 ```python
     '''--------fitness value(calculate makespan)-------------'''
@@ -226,6 +242,8 @@ for i in range(population_size):
 
 ### :arrow_down_small: 選擇  <br>
 
+這裡採用輪盤法 (Roulette wheel) 的選擇機制<br>
+
 ```python
     '''----------selection(roulette wheel approach)----------'''
     pk,qk=[],[]
@@ -251,7 +269,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 比較 <br>
-將每一輪找到的最好的解 (Tbest_now) 跟目前找到的解 (Tbest) 進行比較，一旦這一輪的解比目前為止找到的解還要好，就替代 Tbest 並記錄該解所得到的排程結果
+先比較每個染色體的完工時間 (chrom_fit) ，選出此輪找到的最好解 (Tbest_now) ，接著在跟目前為止找到的最好解 (Tbest) 進行比較，一旦這一輪的解比目前為止找到的解還要好，就替代 Tbest 並記錄該解所得到的排程結果
 ```python
      '''----------comparison----------'''
     for i in range(population_size*2):
@@ -265,6 +283,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 結果 <br>
+等迭代結束後，輸出在所有迭代中找到的最好排程結果 (sequence_best)、該結果的完工時間以及程式執行時間
 
 ```python
 '''----------result----------'''
