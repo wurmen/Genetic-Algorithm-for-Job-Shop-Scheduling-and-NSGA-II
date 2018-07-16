@@ -136,32 +136,34 @@ def non_dominated_sorting(population_size,chroms_obj_record):
 ### :arrow_down_small: 計算擁擠距離的函式 <br>
 ```python
 '''--------calculate crowding distance function---------'''
-def calculate_crowding_distance(population_size,chroms_obj_record):
-    l=population_size*2
-    distance={m:0 for m in range(l)}
+'''--------calculate crowding distance function---------'''
+def calculate_crowding_distance(front,chroms_obj_record):
+    
+    distance={m:0 for m in front}
     for o in range(2):
-        obj={m:chroms_obj_record[m][o] for m in range(l)}
+        obj={m:chroms_obj_record[m][o] for m in front}
         sorted_keys=sorted(obj, key=obj.get)
-        distance[sorted_keys[0]]=distance[sorted_keys[l-1]]=999999999999
-        for i in range(1,l-1):
+        distance[sorted_keys[0]]=distance[sorted_keys[len(front)-1]]=999999999999
+        for i in range(1,len(front)-1):
             if len(set(obj.values()))==1:
                 distance[sorted_keys[i]]=distance[sorted_keys[i]]
             else:
-                distance[sorted_keys[i]]=distance[sorted_keys[i]]+(obj[sorted_keys[i+1]]-obj[sorted_keys[i-1]])/(obj[sorted_keys[l-1]]-obj[sorted_keys[0]])
+                distance[sorted_keys[i]]=distance[sorted_keys[i]]+(obj[sorted_keys[i+1]]-obj[sorted_keys[i-1]])/(obj[sorted_keys[len(front)-1]]-obj[sorted_keys[0]])
+            
     return distance 
 ```
 ### :arrow_down_small: 選擇函式 <br>
 ```python
 '''----------selection----------'''
-def selection(population_size,front,distance):   
+def selection(population_size,front,chroms_obj_record,total_chromosome):   
     N=0
     new_pop=[]
     while N < population_size:
         for i in range(len(front)):
             N=N+len(front[i])
             if N > population_size:
-                cdf={i:distance[i] for i in front[i]}
-                sorted_cdf=sorted(cdf, key=cdf.get)
+                distance=calculate_crowding_distance(front[i],chroms_obj_record)
+                sorted_cdf=sorted(distance, key=distance.get)
                 sorted_cdf.reverse()
                 for j in sorted_cdf:
                     if len(new_pop)==population_size:
@@ -319,25 +321,21 @@ for i in range(population_size):
         makespan=max(j_count.values())
         chroms_obj_record[m]=[twet,makespan]
 ```
-### :arrow_down_small: 非凌越排序及擁擠距離計算  <br>
+### :arrow_down_small: 非凌越排序計算  <br>
 ```python
     '''-------non-dominated sorting-------'''      
-    front=non_dominated_sorting(population_size,chroms_obj_record)
-    
-    '''--------calculate crowding distance---------'''
-    distance=calculate_crowding_distance(population_size,chroms_obj_record)
+    front=non_dominated_sorting(population_size,chroms_obj_record
 ```
 ### :arrow_down_small: 選擇  <br>
 
 ```python
     '''----------selection----------'''
-    population_list,new_pop=selection(population_size,front,distance)
+    population_list,new_pop=selection(population_size,front,chroms_obj_record,total_chromosome)
     new_pop_obj=[chroms_obj_record[k] for k in new_pop]
 ```
 
 ### :arrow_down_small: 比較 <br>
-
-```python
+```
     '''----------comparison----------'''
     if n==0:
         best_list=population_list[:]
@@ -347,8 +345,7 @@ for i in range(population_size):
         total_obj=new_pop_obj[:]+best_obj[:]
         
         now_best_front=non_dominated_sorting(population_size,total_obj)
-        now_best_distance=calculate_crowding_distance(population_size,total_obj)
-        best_list,best_pop=selection(population_size,now_best_front,now_best_distance)
+        best_list,best_pop=selection(population_size,now_best_front,total_obj,total_list)
         best_obj=[total_obj[k] for k in best_pop]
 ```
 
