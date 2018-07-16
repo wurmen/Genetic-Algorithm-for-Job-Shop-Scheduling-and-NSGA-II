@@ -19,7 +19,7 @@ num_mc=10 # number of machines
 
 pt_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Processing Time",index_col =[0])
 ms_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Machines Sequence",index_col =[0])
-job_priority_duedate_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Priority",index_col =[0])
+job_priority_duedate_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Priority and Due date",index_col =[0])
 
 # raw_input is used in python 2
 population_size=int(input('Please input the size of population: ') or 20) # default value is 20
