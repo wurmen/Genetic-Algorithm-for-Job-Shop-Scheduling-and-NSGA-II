@@ -51,7 +51,10 @@ Jop shop 問題與 Flow shop 問題最大的不同在於，不像 Flow shop 問�
 
 此方法的概念是將染色體表示為一組工件的作業加工順序，一個基因代表一個工件的加工作業，根據工件在染色體出現的次數，來得知各個工件目前的加工作業，再來對應各工件的加工機台及加工時間，藉此來進行排程。<br>
 
-假設現在有一個具有 N 個工件 M 台機台的 Job shop 排程問題，那一個染色體將會由 N x M 個基因所組成，因為每個工件在每台機台只會被加工一次，共要被 M 台機台加工，所以每個工件在染色體裡將會出現 M 次，這裡舉上面3 x 3的 Job shop 問題為例
+假設現在有一個具有 N 個工件 M 台機台的 Job shop 排程問題，那一個染色體將會由 N x M 個基因所組成，因為每個工件在每台機台只會被加工一次，共要被 M 台機台加工，所以每個工件在染色體裡將會出現 M 次，這裡舉上面3 x 3的 Job shop 問題為例 <br>
+
+O<sub>ijk</sup></sub> 表示工件 i 在作業程序 j 使用第 k 台機台 
+
 <br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/5.png" width="780" height="420">
