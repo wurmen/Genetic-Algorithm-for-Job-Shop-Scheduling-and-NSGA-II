@@ -52,7 +52,9 @@ O<sub>ijk</sup></sub> 表示工件 i 在作業程序 j 使用第 k 台機台
 
 ## :black_nib: 程式說明 <br>
 
-這裡主要針對程式中幾個重要區塊來說明，有些細節並無放入，如有需要請參考[完整程式碼]或[範例檔案]
+這裡主要針對程式中幾個重要區塊來說明，有些細節並無放入，如有需要請參考[完整程式碼](https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/NSGA-II/NSGA-II%20code.py)或[範例檔案](https://wurmen.github.io/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/implementation%20with%20python/NSGA-II/Example.html)<br>
+
+:bulb:由於下列程式有三個主要函式，建議可自行 print 函式的輸入與輸出值，以利裡解函式的執行過程 
 
 ### :arrow_down_small: 導入所需套件 <br>
 
@@ -92,8 +94,8 @@ start_time = time.time()
 
 ```
 ### :arrow_down_small: 非凌越排序函式 <br>
-- 此函式有兩個輸入-族群大小及染色體的兩個適應值 (makespan and TWET)，此兩個值紀錄於 chroms_obj_record 字典中
-- 輸出各個前緣所包含的染色體
+- 此函式有兩個輸入-族群大小及族群內各染色體的兩個適應值 (makespan and TWET)，此兩個值紀錄於 chroms_obj_record 字典中
+- 輸出各個前緣所包含的染色體 index
 ```python
 '''-------non-dominated sorting function-------'''      
 def non_dominated_sorting(population_size,chroms_obj_record):
@@ -134,8 +136,9 @@ def non_dominated_sorting(population_size,chroms_obj_record):
     return front
 ```
 ### :arrow_down_small: 計算擁擠距離的函式 <br>
+- 輸入：要被計算的前緣內含的染色體 index 、目前所有染色體的適應值 (可透過前者輸入的index去抓要被計算染色體的適應值)
+- 輸出：被計算染色體的擁擠距離
 ```python
-'''--------calculate crowding distance function---------'''
 '''--------calculate crowding distance function---------'''
 def calculate_crowding_distance(front,chroms_obj_record):
     
@@ -153,6 +156,9 @@ def calculate_crowding_distance(front,chroms_obj_record):
     return distance 
 ```
 ### :arrow_down_small: 選擇函式 <br>
+此函式內部會呼叫計算擁擠距離的函式 (calculate_crowding_distance)，因為在選擇染色體形成新族群的過程中，當剩餘要被挑選的染色體數，小於當前的凌越前緣內的染色體數時，就必須透過擁擠距離來判斷我要選擇哪一條染色體。<br>
+- 輸入：族群大小、由非凌越函式得到的各前緣內含的染色體 index、要被選擇的所有染色體的適應值以及各染色體的排程結果 list
+- 輸出：新的族群 list 及 族群內在原本族群 list 中的 index 
 ```python
 '''----------selection----------'''
 def selection(population_size,front,chroms_obj_record,total_chromosome):   
@@ -181,7 +187,7 @@ def selection(population_size,front,chroms_obj_record,total_chromosome):
 ```
 ### :arrow_down_small: 產生初始解 <br>
 
-根據上述所設定的族群大小，透過隨機的方式，產生初始族群，每個染色體共有 10 x 10 = 100  個基因
+根據上述所設定的族群大小，透過隨機的方式，產生初始族群，每個染色體共有 10 x 10 = 100  個基因，每一個染色體由一個 list 來儲存
 
 ```python
 '''----- generate initial population -----'''
@@ -196,7 +202,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 交配 <br>
-這裡採用雙點交配法，一開始會先產生一組用來選擇親代染色體的隨機序列，接著從序列中，兩個兩個抓出來，根據交配率來決定是否要進行交配，如果要，則交配，產生兩個子代，並取代原本的母代染色體
+這裡採用雙點交配法，一開始會先產生一組用來選擇親代染色體的隨機序列，接著從序列中，兩個兩個抓出來，根據交配率來決定是否要進行交配，如果要，則交配產生兩個子代，並取代原本的親代染色體
 ```python
     '''-------- two point crossover --------'''
     parent_list=population_list[:]
@@ -277,7 +283,8 @@ for i in range(population_size):
   
 ```
 ### :arrow_down_small: 適應值計算 <br>
-
+- 計算每個染色體的兩個目標值- makespan and TWET
+- 這裡會將親代 (parent_list) 與子代 (offspring_list) 合併成一個大的list (total_chromosome)，後續選擇時是從這個大 list 來進行選擇，產生新族群
 ```python
      '''--------fitness value(calculate  makespan and TWET)-------------'''
     total_chromosome=parent_list[:]+offspring_list[:] # combine parent and offspring chromosomes
@@ -335,6 +342,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 比較 <br>
+將此輪找到最好的那些解，與目前為止迭代中找到得最好的解進行比較
 ```
     '''----------comparison----------'''
     if n==0:
@@ -350,7 +358,7 @@ for i in range(population_size):
 ```
 
 ### :arrow_down_small: 結果 <br>
-
+最終會輸出在所有迭代過程中找到最好的解，由於這是多目標問題，所以可能會有多組解，這邊的設定是，輸出與族群大小相同數量的解
 ```python
 '''----------result----------'''
 print(best_list)
