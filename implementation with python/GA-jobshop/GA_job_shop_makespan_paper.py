@@ -17,13 +17,10 @@ Github: https://github.com/wurmen
 
 '''==========Solving job shop scheduling problem by gentic algorithm in python======='''
 # importing required modules
-import os
 import pandas as pd
 import numpy as np
 import time
 
-#os.chdir("D:\\graduate\\碩一(下)\\作業研究應用\\ORA_project\\final project\\GA in python") # change the path
-#os.chdir("C:\\Users\\wu\\Documents\\MEGA\\graduate\\碩一(下)\\作業研究應用\\ORA_project\\final project\\GA") # change the path
 '''================ repairment function ====================='''
 def repairment(child,partial_parent,missed_gene,exceeded_gene):
     if exceeded_gene:
@@ -41,9 +38,6 @@ def repairment(child,partial_parent,missed_gene,exceeded_gene):
     return child
 ''' ================= initialization setting ======================'''
 
-#pt_tmp=pd.read_excel("test_dataset.xlsx",sheet_name="Processing Time",index_col =[0])
-#ms_tmp=pd.read_excel("test_dataset.xlsx",sheet_name="Machines Sequence",index_col =[0])
-#job_duedate_tmp=pd.read_excel("test_dataset.xlsx",sheet_name="Priority",index_col =[0])
 pt_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Processing Time",index_col =[0])
 ms_tmp=pd.read_excel("JSP_dataset.xlsx",sheet_name="Machines Sequence",index_col =[0])
 
@@ -62,9 +56,8 @@ ms=[list(map(int,ms_tmp.iloc[i])) for i in range(num_job)]
 population_size=int(input('Please input the size of population: ') or 30) # default value is 30
 crossover_rate=float(input('Please input the size of Crossover Rate: ') or 0.8) # default value is 0.8
 mutation_rate=float(input('Please input the size of Mutation Rate: ') or 0.2) # default value is 0.2
-#mutation_selection_rate=float(input('Please input the mutation selection rate: ') or 0.2)
-#num_mutation_jobs=round(num_gene*mutation_selection_rate)
-num_mutation_jobs=2
+mutation_selection_rate=float(input('Please input the mutation selection rate: ') or 0.2)
+num_mutation_jobs=round(num_gene*mutation_selection_rate)
 num_iteration=int(input('Please input number of iteration: ') or 2000) # default value is 2000
     
 start_time = time.time()
@@ -218,44 +211,44 @@ print("optimal sequence",sequence_best)
 print("optimal value:%f"%Tbest)
 print('the elapsed time:%s'% (time.time() - start_time))
 
-#'''--------plot gantt chart-------'''
-#import pandas as pd
-#import plotly.plotly as py
-#import plotly.figure_factory as ff
-#import datetime
-#
-#m_keys=[j+1 for j in range(num_mc)]
-#j_keys=[j for j in range(num_job)]
-#key_count={key:0 for key in j_keys}
-#j_count={key:0 for key in j_keys}
-#m_count={key:0 for key in m_keys}
-#j_record={}
-#for i in sequence_best:
-#    gen_t=int(pt[i][key_count[i]])
-#    gen_m=int(ms[i][key_count[i]])
-#    j_count[i]=j_count[i]+gen_t
-#    m_count[gen_m]=m_count[gen_m]+gen_t
-#    
-#    if m_count[gen_m]<j_count[i]:
-#        m_count[gen_m]=j_count[i]
-#    elif m_count[gen_m]>j_count[i]:
-#        j_count[i]=m_count[gen_m]
-#    
-#    start_time=str(datetime.timedelta(seconds=j_count[i]-pt[i][key_count[i]])) # convert seconds to hours, minutes and seconds
-#    end_time=str(datetime.timedelta(seconds=j_count[i]))
-#        
-#    j_record[(i,gen_m)]=[start_time,end_time]
-#    
-#    key_count[i]=key_count[i]+1
-#        
-#
-#df=[]
-#for m in m_keys:
-#    for j in j_keys:
-#        df.append(dict(Task='Machine %s'%(m), Start='2018-07-14 %s'%(str(j_record[(j,m)][0])), Finish='2018-07-14 %s'%(str(j_record[(j,m)][1])),Resource='Job %s'%(j+1)))
-#    
-#fig = ff.create_gantt(df, index_col='Resource', show_colorbar=True, group_tasks=True, showgrid_x=True, title='Job shop Schedule')
-#py.iplot(fig, filename='GA_job_shop_scheduling1', world_readable=True)
+'''--------plot gantt chart-------'''
+import pandas as pd
+import plotly.plotly as py
+import plotly.figure_factory as ff
+import datetime
+
+m_keys=[j+1 for j in range(num_mc)]
+j_keys=[j for j in range(num_job)]
+key_count={key:0 for key in j_keys}
+j_count={key:0 for key in j_keys}
+m_count={key:0 for key in m_keys}
+j_record={}
+for i in sequence_best:
+    gen_t=int(pt[i][key_count[i]])
+    gen_m=int(ms[i][key_count[i]])
+    j_count[i]=j_count[i]+gen_t
+    m_count[gen_m]=m_count[gen_m]+gen_t
+    
+    if m_count[gen_m]<j_count[i]:
+        m_count[gen_m]=j_count[i]
+    elif m_count[gen_m]>j_count[i]:
+        j_count[i]=m_count[gen_m]
+    
+    start_time=str(datetime.timedelta(seconds=j_count[i]-pt[i][key_count[i]])) # convert seconds to hours, minutes and seconds
+    end_time=str(datetime.timedelta(seconds=j_count[i]))
+        
+    j_record[(i,gen_m)]=[start_time,end_time]
+    
+    key_count[i]=key_count[i]+1
+        
+
+df=[]
+for m in m_keys:
+    for j in j_keys:
+        df.append(dict(Task='Machine %s'%(m), Start='2018-07-14 %s'%(str(j_record[(j,m)][0])), Finish='2018-07-14 %s'%(str(j_record[(j,m)][1])),Resource='Job %s'%(j+1)))
+    
+fig = ff.create_gantt(df, index_col='Resource', show_colorbar=True, group_tasks=True, showgrid_x=True, title='Job shop Schedule')
+py.iplot(fig, filename='GA_job_shop_scheduling1', world_readable=True)
 
 
  
