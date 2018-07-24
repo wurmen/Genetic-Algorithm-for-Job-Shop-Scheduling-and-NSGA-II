@@ -212,11 +212,11 @@ for i in range(population_size):
     for i in range(population_size):
         if selection_rand[i]<=qk[0]:
             population_list[i][:]=total_chromosome[0][:]
-            break
         else:
             for j in range(0,population_size*2-1):
                 if selection_rand[i]>qk[j] and selection_rand[i]<=qk[j+1]:
                     population_list[i][:]=total_chromosome[j+1][:]
+                    break
 ```
 
 ### :arrow_down_small: 比較 <br>
@@ -244,8 +244,8 @@ for i in range(population_size):
 等所有迭代次數結束後，會輸出在所有迭代中找到的最好排程結果 (sequence_best)、它的總加權延遲時間、每個工件平均加權延遲時間、有多少工件延遲以及程式執行時間
 ```python
 '''----------result----------'''
-print("optimeal sequence",sequence_best)
-print("optimeal value:%f"%Tbest)
+print("optimal sequence",sequence_best)
+print("optimal value:%f"%Tbest)
 print("average tardiness:%f"%(Tbest/num_job))
 print("number of tardy:%d"%num_tardy)
 print('the elapsed time:%s'% (time.time() - start_time))

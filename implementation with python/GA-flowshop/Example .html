@@ -11900,12 +11900,11 @@ div#notebook {
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">population_size</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">selection_rand</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">qk</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="n">population_list</span><span class="p">[</span><span class="n">i</span><span class="p">][:]</span><span class="o">=</span><span class="n">total_chromosome</span><span class="p">[</span><span class="mi">0</span><span class="p">][:]</span>
-            <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">population_size</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">selection_rand</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="n">qk</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">and</span> <span class="n">selection_rand</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">qk</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
                     <span class="n">population_list</span><span class="p">[</span><span class="n">i</span><span class="p">][:]</span><span class="o">=</span><span class="n">total_chromosome</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">][:]</span>
-            
+                    <span class="k">break</span>
     <span class="sd">&#39;&#39;&#39;----------comparison----------&#39;&#39;&#39;</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">population_size</span><span class="o">*</span><span class="mi">2</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">chrom_fit</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;</span><span class="n">Tbest_now</span><span class="p">:</span>
@@ -11923,8 +11922,8 @@ div#notebook {
         <span class="k">if</span> <span class="n">job_sequence_ptime</span><span class="o">&gt;</span><span class="n">d</span><span class="p">[</span><span class="n">sequence_best</span><span class="p">[</span><span class="n">k</span><span class="p">]]:</span>
             <span class="n">num_tardy</span><span class="o">=</span><span class="n">num_tardy</span><span class="o">+</span><span class="mi">1</span>
 <span class="sd">&#39;&#39;&#39;----------result----------&#39;&#39;&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;optimeal sequence&quot;</span><span class="p">,</span><span class="n">sequence_best</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;optimeal value:</span><span class="si">%f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">Tbest</span>)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;optimal sequence&quot;</span><span class="p">,</span><span class="n">sequence_best</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;optimal value:</span><span class="si">%f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">Tbest</span>)
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;average tardiness:</span><span class="si">%f</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">Tbest</span><span class="o">/</span><span class="n">num_job</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;number of tardy:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">num_tardy</span>)
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the elapsed time:</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
@@ -11949,11 +11948,11 @@ Please input the size of Crossover Rate:
 Please input the size of Mutation Rate: 
 Please input the mutation selection rate: 
 Please input number of iteration: 
-optimeal sequence [9, 16, 11, 4, 15, 3, 13, 0, 7, 1, 6, 8, 19, 12, 10, 17, 14, 5, 2, 18]
-optimeal value:2165.000000
-average tardiness:108.250000
-number of tardy:14
-the elapsed time:13.18339467048645
+optimal sequence [11, 4, 15, 13, 8, 10, 19, 0, 3, 16, 7, 9, 12, 6, 17, 14, 5, 1, 2, 18]
+optimal value:2150.000000
+average tardiness:107.500000
+number of tardy:15
+the elapsed time:13.817028999328613
 </pre>
 </div>
 </div>
@@ -12174,12 +12173,11 @@ the elapsed time:13.18339467048645
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">population_size</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">selection_rand</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">qk</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="n">population_list</span><span class="p">[</span><span class="n">i</span><span class="p">][:]</span><span class="o">=</span><span class="n">total_chromosome</span><span class="p">[</span><span class="mi">0</span><span class="p">][:]</span>
-            <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">population_size</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">selection_rand</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="n">qk</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">and</span> <span class="n">selection_rand</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">qk</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
                     <span class="n">population_list</span><span class="p">[</span><span class="n">i</span><span class="p">][:]</span><span class="o">=</span><span class="n">total_chromosome</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">][:]</span>
-            
+                    <span class="k">break</span>
     <span class="sd">&#39;&#39;&#39;----------comparison----------&#39;&#39;&#39;</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">population_size</span><span class="o">*</span><span class="mi">2</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">chrom_fit</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;</span><span class="n">Tbest_now</span><span class="p">:</span>
@@ -12215,9 +12213,9 @@ Please input the size of Crossover Rate:
 Please input the size of Mutation Rate: 
 Please input the mutation selection rate: 
 Please input number of iteration: 
-optimal sequence [3, 6, 5, 8, 4, 7, 0, 1, 2]
+optimal sequence [1, 6, 5, 8, 4, 3, 7, 2, 0]
 optimal value:147.000000
-the elapsed time:12.955524206161499
+the elapsed time:12.959511041641235
 </pre>
 </div>
 </div>

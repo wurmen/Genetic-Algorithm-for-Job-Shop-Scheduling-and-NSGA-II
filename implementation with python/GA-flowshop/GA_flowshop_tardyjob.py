@@ -114,12 +114,11 @@ for n in range(num_iteration):
     for i in range(population_size):
         if selection_rand[i]<=qk[0]:
             population_list[i][:]=total_chromosome[0][:]
-            break
         else:
             for j in range(0,population_size*2-1):
                 if selection_rand[i]>qk[j] and selection_rand[i]<=qk[j+1]:
                     population_list[i][:]=total_chromosome[j+1][:]
-            
+                    break
     '''----------comparison----------'''
     for i in range(population_size*2):
         if chrom_fit[i]<Tbest_now:
@@ -137,8 +136,8 @@ for n in range(num_iteration):
         if job_sequence_ptime>d[sequence_best[k]]:
             num_tardy=num_tardy+1
 '''----------result----------'''
-print("optimeal sequence",sequence_best)
-print("optimeal value:%f"%Tbest)
+print("optimal sequence",sequence_best)
+print("optimal value:%f"%Tbest)
 print("average tardiness:%f"%(Tbest/num_job))
 print("number of tardy:%d"%num_tardy)
 print('the elapsed time:%s'% (time.time() - start_time))
