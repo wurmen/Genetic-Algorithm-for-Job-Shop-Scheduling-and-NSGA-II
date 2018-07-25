@@ -265,11 +265,11 @@ for i in range(population_size):
     for i in range(population_size):
         if selection_rand[i]<=qk[0]:
             population_list[i][:]=total_chromosome[0][:]
-            break
         else:
             for j in range(0,population_size*2-1):
                 if selection_rand[i]>qk[j] and selection_rand[i]<=qk[j+1]:
                     population_list[i][:]=total_chromosome[j+1][:]
+                    break
 ```
 
 ### :arrow_down_small: 比較 <br>
