@@ -1,4 +1,4 @@
-# Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II (cont.)
+# Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II
 本主題主要介紹如何透過基因演算法 (Genetic Algorithm, GA) 與非凌越排序基因演算法 (Nondominated Sorting Genetic Algorithm II, NSGA-II) 來求解 Job Shop 排程問題。一開始會先進行 GA 及 NSGA-II 的概念介紹，最後再透過 Python 來進行實作並說明。
 ## § Introduction
 
