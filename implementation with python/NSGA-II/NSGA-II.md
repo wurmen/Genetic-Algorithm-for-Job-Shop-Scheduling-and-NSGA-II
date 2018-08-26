@@ -64,6 +64,7 @@ O<sub>ijk</sup></sub> 表示工件 i 在作業程序 j 使用第 k 台機台
 import pandas as pd
 import numpy as np
 import time
+import copy
 ```
 
 ### :arrow_down_small: 初始設定 <br>
@@ -205,7 +206,7 @@ for i in range(population_size):
 這裡採用雙點交配法，一開始會先產生一組用來選擇親代染色體的隨機序列，接著從序列中，兩個兩個抓出來，根據交配率來決定是否要進行交配，如果要，則交配產生兩個子代，並取代原本的親代染色體
 ```python
     '''-------- two point crossover --------'''
-    parent_list=population_list[:]
+    parent_list=copy.deepcopy(population_list)
     offspring_list=[]
     S=list(np.random.permutation(population_size)) # generate a random sequence to select the parent chromosome to crossover
     
@@ -287,7 +288,7 @@ for i in range(population_size):
 - 這裡會將親代 (parent_list) 與子代 (offspring_list) 合併成一個大的list (total_chromosome)，後續選擇時是從這個大 list 來進行選擇，產生新族群
 ```python
      '''--------fitness value(calculate  makespan and TWET)-------------'''
-    total_chromosome=parent_list[:]+offspring_list[:] # combine parent and offspring chromosomes
+    total_chromosome=copy.deepcopy(parent_list)+copy.deepcopy(offspring_list) # combine parent and offspring chromosomes
     chroms_obj_record={} # record each chromosome objective values as chromosome_obj_record={chromosome:[TWET,makespan]}
     for m in range(population_size*2):
         j_keys=[j for j in range(num_job)]
@@ -345,12 +346,12 @@ for i in range(population_size):
 將此輪找到最好的那些解，與目前為止迭代中找到得最好的解進行比較
 ```
     '''----------comparison----------'''
-    if n==0:
-        best_list=population_list[:]
-        best_obj=new_pop_obj[:]
+	if n==0:
+        best_list=copy.deepcopy(population_list)
+        best_obj=copy.deepcopy(new_pop_obj)
     else:            
-        total_list=population_list[:]+best_list[:]
-        total_obj=new_pop_obj[:]+best_obj[:]
+        total_list=copy.deepcopy(population_list)+copy.deepcopy(best_list)
+        total_obj=copy.deepcopy(new_pop_obj)+copy.deepcopy(best_obj)
         
         now_best_front=non_dominated_sorting(population_size,total_obj)
         best_list,best_pop=selection(population_size,now_best_front,total_obj,total_list)
