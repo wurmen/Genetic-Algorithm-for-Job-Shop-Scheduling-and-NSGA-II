@@ -12,7 +12,7 @@ The objective function is to minimize the total weighted tardiness.
 '''
 # importing required modules
 #import os
-import pandas as pd
+
 import numpy as np
 import time
 import copy

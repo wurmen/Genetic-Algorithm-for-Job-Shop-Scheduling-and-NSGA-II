@@ -130,8 +130,8 @@ for i in range(population_size):
 
 ```python
     '''-------- two point crossover --------'''
-    parent_list=population_list[:] # preserve the original parent chromosomes
-    offspring_list=population_list[:]
+	parent_list=copy.deepcopy(population_list) # preserve the original parent chromosomes
+    offspring_list=copy.deepcopy(population_list)
     S=list(np.random.permutation(population_size)) # generate a random sequence to select the parent chromosome to crossover
     
     for m in range(int(population_size/2)):
@@ -215,7 +215,7 @@ for i in range(population_size):
 
 ```python
     '''--------fitness value(calculate makespan)-------------'''
-    total_chromosome=parent_list[:]+offspring_list[:] # parent and offspring chromosomes combination
+    total_chromosome=copy.deepcopy(parent_list)+copy.deepcopy(offspring_list) # parent and offspring chromosomes combination
     chrom_fitness,chrom_fit=[],[]
     total_fitness=0
     for m in range(population_size*2):
@@ -264,11 +264,11 @@ for i in range(population_size):
     
     for i in range(population_size):
         if selection_rand[i]<=qk[0]:
-            population_list[i][:]=total_chromosome[0][:]
+			population_list[i]=copy.deepcopy(total_chromosome[0])
         else:
             for j in range(0,population_size*2-1):
                 if selection_rand[i]>qk[j] and selection_rand[i]<=qk[j+1]:
-                    population_list[i][:]=total_chromosome[j+1][:]
+					population_list[i]=copy.deepcopy(total_chromosome[j+1])
                     break
 ```
 
@@ -279,11 +279,11 @@ for i in range(population_size):
     for i in range(population_size*2):
         if chrom_fit[i]<Tbest_now:
             Tbest_now=chrom_fit[i]
-            sequence_now=total_chromosome[i][:]
+            sequence_now=copy.deepcopy(total_chromosome[i])
     
     if Tbest_now<=Tbest:
         Tbest=Tbest_now
-        sequence_best=sequence_now[:]
+        sequence_best=copy.deepcopy(sequence_now)
 ```
 
 ### :arrow_down_small: 結果 <br>
