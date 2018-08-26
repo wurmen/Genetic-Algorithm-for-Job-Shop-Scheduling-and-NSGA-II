@@ -72,9 +72,9 @@ chromosome 2 => [4,2,0,1,3] <br>
 
 ```python
 # importing required modules
-import pandas as pd
 import numpy as np
 import time
+import copy
 ```
 
 ### :arrow_down_small: 初始設定 <br>
@@ -126,8 +126,8 @@ for i in range(population_size):
 
 ```python
     '''-------- crossover --------'''
-    parent_list=population_list[:]
-    offspring_list=population_list[:]
+	parent_list=copy.deepcopy(population_list)
+    offspring_list=copy.deepcopy(population_list)
     S=list(np.random.permutation(population_size)) # generate a random sequence to select the parent chromosome to crossover
     
     for m in range(int(population_size/2)):
@@ -179,7 +179,7 @@ for i in range(population_size):
 計算每個染色體也就是每個排程結果的總加權延遲，並將其記錄，以利後續選擇時能比較
 ```python
     '''--------fitness value(calculate tardiness)-------------'''
-    total_chromosome=parent_list[:]+offspring_list[:] # parent and offspring chromosomes combination
+    total_chromosome=copy.deepcopy(parent_list)+copy.deepcopy(offspring_list) # parent and offspring chromosomes combination
     chrom_fitness,chrom_fit=[],[]
     total_fitness=0
     for i in range(population_size*2):
@@ -211,11 +211,11 @@ for i in range(population_size):
     
     for i in range(population_size):
         if selection_rand[i]<=qk[0]:
-            population_list[i][:]=total_chromosome[0][:]
+			population_list[i]=copy.deepcopy(total_chromosome[0])
         else:
             for j in range(0,population_size*2-1):
                 if selection_rand[i]>qk[j] and selection_rand[i]<=qk[j+1]:
-                    population_list[i][:]=total_chromosome[j+1][:]
+					population_list[i]=copy.deepcopy(total_chromosome[j+1]) 
                     break
 ```
 
@@ -226,11 +226,11 @@ for i in range(population_size):
     for i in range(population_size*2):
         if chrom_fit[i]<Tbest_now:
             Tbest_now=chrom_fit[i]
-            sequence_now=total_chromosome[i][:]
+			sequence_now=copy.deepcopy(total_chromosome[i])
     
     if Tbest_now<=Tbest:
         Tbest=Tbest_now
-        sequence_best=sequence_now[:]
+		sequence_best=copy.deepcopy(sequence_now)
     
     job_sequence_ptime=0
     num_tardy=0
