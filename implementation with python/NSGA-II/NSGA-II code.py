@@ -13,6 +13,7 @@ Github: https://github.com/wurmen
 import pandas as pd
 import numpy as np
 import time
+import copy
 ''' ================= initialization setting ======================'''
 num_job=10 # number of jobs
 num_mc=10 # number of machines
@@ -127,7 +128,7 @@ for i in range(population_size):
         
 for n in range(num_iteration):           
     '''-------- two point crossover --------'''
-    parent_list=population_list[:]
+    parent_list=copy.deepcopy(population_list)
     offspring_list=[]
     S=list(np.random.permutation(population_size)) # generate a random sequence to select the parent chromosome to crossover
     
@@ -187,7 +188,7 @@ for n in range(num_iteration):
                         
     
     '''--------fitness value(calculate  makespan and TWET)-------------'''
-    total_chromosome=parent_list[:]+offspring_list[:] # combine parent and offspring chromosomes
+    total_chromosome=copy.deepcopy(parent_list)+copy.deepcopy(offspring_list) # combine parent and offspring chromosomes
     chroms_obj_record={} # record each chromosome objective values as chromosome_obj_record={chromosome:[TWET,makespan]}
     for m in range(population_size*2):
         j_keys=[j for j in range(num_job)]
@@ -239,11 +240,11 @@ for n in range(num_iteration):
 
     '''----------comparison----------'''
     if n==0:
-        best_list=population_list[:]
-        best_obj=new_pop_obj[:]
+        best_list=copy.deepcopy(population_list)
+        best_obj=copy.deepcopy(new_pop_obj)
     else:            
-        total_list=population_list[:]+best_list[:]
-        total_obj=new_pop_obj[:]+best_obj[:]
+        total_list=copy.deepcopy(population_list)+copy.deepcopy(best_list)
+        total_obj=copy.deepcopy(new_pop_obj)+copy.deepcopy(best_obj)
         
         now_best_front=non_dominated_sorting(population_size,total_obj)
         best_list,best_pop=selection(population_size,now_best_front,total_obj,total_list)
