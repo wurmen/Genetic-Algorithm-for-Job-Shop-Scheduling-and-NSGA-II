@@ -31,13 +31,15 @@
 ### :arrow_down_small: 編碼 (Encoding) <br>
 
 在 GA 整個執行的過程中，會在所謂的編碼空間 (Coding space)與解空間 (Solution space)內交替運行，而在編碼空間裡主要在執行基因操作，像突變和交配的動作，在解空間中，則執行評估及選擇，如下圖所示：
+
 <br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/11.png" width="600" height="300">
 </div>
 <br>
-在編碼空間中，會以編碼的形式來代表一個解，就如背景介紹所提，在 GA 通常一個染色體 (Chromosome) 代表求解問題的一個潛在解 (Potential solution)，而染色體是由基因所組成，所以基因即表示解的一部份。因此在演算法開始前，必須先依照問題的屬性來進行染色體的設計。<br>
 
+在編碼空間中，會以編碼的形式來代表一個解，就如背景介紹所提，在 GA 通常一個染色體 (Chromosome) 代表求解問題的一個潛在解 (Potential solution)，而染色體是由基因所組成，所以基因即表示解的一部份。因此在演算法開始前，必須先依照問題的屬性來進行染色體的設計。<br>
+<br>
 染色體編碼的方式有很多種，最常見的編碼方式為二元編碼 (Binary encoding)，也就是將解轉換成用1與0的排列字串表示，這樣的方式也最常使用在當你的解為數值形式時，如下圖所示：<br>
 
 :bulb: 在排程中，通常以一個工件加工序列來當作一個染色體<br>
