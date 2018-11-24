@@ -101,7 +101,7 @@
 
 ### :arrow_down_small: 交配 (Crossover) <br>
 
-通常在進行交配時，會先根據所設定的交配率 (Crossover rate) 來決定任意兩條染色體是否要做交配的動作，以產生子代。<br>
+通常在進行交配時，會先根據所設定的交配率 (Crossover rate) 來決定任意兩條染色體是否要做交配的動作，將兩個染色體的部分基因進行交換重組，以產生新的染色體。<br>
 交配的方式也是有很多種，下面將說明三種常見的交配方法 (在排程實例說明中，將會示範其他不一樣的交配方式。)<br>
 
 (以下皆以二元編碼的染色體進行示範)<br>
@@ -157,7 +157,13 @@
 
 ### :arrow_down_small: 適應值計算 (Fitness computation) <br>
 
+:balloon: 適應函數用來評估染色體品質<br>
+
 用GA求解問題時，必須制定屬於這個問題的適應函數 (Fitness function)，適應函數是用來評估染色體好壞的機制，透過轉換出來的適應值 (Fitness value)，來判斷染色體的適應度，當適應值越好，在下一個步驟選擇染色體時，該染色體就有越大的機率被保留下來繼續繁衍，相反的，適應值越糟，則越有可能被淘汰，一般來說，適應函數通常是求解問題的目標函數，或者訂定一個足以代表求解問題目標的函數，以能夠充分評估染色體的品質。
+
+:balloon: 制定適應函數 (Fitness function) <br>
+
+一般來說，適應函數通常是求解問題的目標函數，或者訂定一個足以代表求解問題目標的函數，以能夠充分評估染色體的品質。
 
 :bulb: 基本上在執行這個步驟前，必須先將染色體進行解碼才能進一步的去計算適應值。
 
@@ -168,7 +174,13 @@
 
 ### :arrow_down_small: 選擇 (Selection) <br>
 
-為了保留更優秀的染色體來進行演化，此步驟主要是根據上面步驟所產生的染色體，透過一些選擇機制 (Selection mechanism)，來進行挑選，將品質較好的染色體留下來，形成新的族群，來進行下一回合的演化，以下將介紹兩種選擇機制：
+為了保留更優秀的染色體來進行演化，此步驟主要是根據上面步驟所產生的染色體，透過一些選擇機制 (Selection mechanism)，來進行挑選，將品質較好的染色體留下來，形成新的族群，來進行下一回合的演化，以下將介紹兩種選擇機制：<br>
+
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/14.gif" width="445" height="250">
+</div>
+<br> 
 
 **1. 輪盤法 (Roulette wheel)** <br>
 
