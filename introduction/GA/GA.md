@@ -38,14 +38,17 @@
 <br>
 在編碼空間中，會以編碼的形式來代表一個解，就如背景介紹所提，在 GA 通常一個染色體 (Chromosome) 代表求解問題的一個潛在解 (Potential solution)，而染色體是由基因所組成，所以基因即表示解的一部份。因此在演算法開始前，必須先依照問題的屬性來進行染色體的設計。<br>
 
-染色體編碼的方式有很多種，最常見的編碼方式為二元編碼 (Binary encoding)，也就是將解轉換成用1與0的排列字串表示，這樣的方式也最常使用在當你的解為數值形式時，我們以[維基百科](https://zh.wikipedia.org/wiki/%E6%9F%93%E8%89%B2%E9%AB%94_(%E9%81%BA%E5%82%B3%E6%BC%94%E7%AE%97%E6%B3%95))內舉的例子進行說明：<br>
+染色體編碼的方式有很多種，最常見的編碼方式為二元編碼 (Binary encoding)，也就是將解轉換成用1與0的排列字串表示，這樣的方式也最常使用在當你的解為數值形式時，如下圖所示：<br>
 
+:bulb: 在排程中，通常以一個工件加工序列來當作一個染色體<br>
 
 <br>
 <div align=center>
 <img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/introduction/GA/picture/13.png" width="450" height="150">
 </div>
 <br>
+
+我們以[維基百科](https://zh.wikipedia.org/wiki/%E6%9F%93%E8%89%B2%E9%AB%94_(%E9%81%BA%E5%82%B3%E6%BC%94%E7%AE%97%E6%B3%95))內舉的例子進行簡單的編碼說明：<br>
 
 **Example**<br>
 假設現在有一個問題是要找出介於0 ~ 255間的一個整數 x ，這個整數 x 要使得函數 f(x)=x<sup>2</sup></sub> 的值最大 (當然這是個非常簡單的問題，但這裡為了作個簡單的說明，所以不要太在意XD)。 <br>
