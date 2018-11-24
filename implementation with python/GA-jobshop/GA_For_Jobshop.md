@@ -127,6 +127,11 @@ for i in range(population_size):
 
 一開始會先產生一組用來選擇親代染色體的隨機序列，接著從序列中，兩個兩個抓出來，根據交配率來決定是否要進行交配，如果要，則採用雙點交配法，產生兩個子代，並取代原本的母代染色體
 
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/6.png" width="450" height="300">
+</div>
+<br>
 
 ```python
     '''-------- two point crossover --------'''
@@ -151,6 +156,12 @@ for i in range(population_size):
 ```
 ### :arrow_down_small: 修復 <br>
 本範例是一個 10 x 10 的 Job shop 問題，因此每個工件在染色體出現的次數為10次，但由於上面進行交配的動作，會導致有些染色體內的工件出現次數會小於10或大於10，而形成一個不可行的排程解，所以這裡必須針對不可行的染色體進行修復動作，使它成為一個可行排程
+
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/7.png" width="450" height="285">
+</div>
+<br>
 
 ```python
     '''----------repairment-------------'''
