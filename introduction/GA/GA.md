@@ -1,5 +1,5 @@
 # Genetic Algorithm (GA)
-*POLab* <br>
+*[POLab](http://polab.imis.ncku.edu.tw/)* <br>
 *[cheng-man wu](https://www.linkedin.com/in/chengmanwu)*<br>
 *2018/07/13*
 <br>
@@ -206,7 +206,21 @@
 :balloon: Step 5. 如果 r <= q<sub>1</sup></sub>，則選擇第一條染色體，否則，當q<sub>k-1</sup></sub> < r < q<sub>k</sup></sub>，則選擇第 k 個染色體 v<sub>k</sup></sub>
 
 
-:balloon: Step 6. 回到 Step 4 ，直到選擇的染色體數量，達到所設定的族群大小
+:balloon: Step 6. 回到 Step 4 ，直到選擇的染色體數量，達到所設定的族群大小<br>
+
+**Example**<br>
+假設現在有一個最大化的問題，共有四個染色體，這四個染色體的適應值，分別為 4、7、3、6 <br>
+- Step 1. 計算所有要被選擇染色體的適應值總和 F<br>
+F = 4 + 7 + 3 + 6 = 20
+
+- Step 2. 對每個染色體 vk，計算其選擇機率 pk<br>
+p1 =0.2 、p2 =0.35、p3 =0.15、p4 =0.3
+
+- Step 3. 對每個染色體 vk，計算其累積機率 qk<br>
+q1=0.2、 q2=0.55、 q3=0.7、 q4=1
+
+- Step 4. 從區間 [ 0 , 1 ] 中，隨機產生一個數字 r <br>
+r = 0.6
 
 **2. 競爭選取法 (Tournament selection)** <br>
 
@@ -235,6 +249,7 @@
 - 突變率 (Mutation rate)
 - 適應函式 (Fitness function)
 - 選擇機制 (Selection mechanism)
+- 終止條件 (Termination condition)
 
 ## :black_nib: Reference
 - Holland, J. H. (1975). Adaptation in natural and artificial systems. Ann Arbor, MI: University of Michigan Press.
