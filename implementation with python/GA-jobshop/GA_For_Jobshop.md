@@ -308,11 +308,12 @@ print('the elapsed time:%s'% (time.time() - start_time))
 ```
 <br>
 <div align=center>
-<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/8.JPG" width="700" height="400">
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/8.JPG" width="700" height="350">
 </div>
 <br>
 
 ### :arrow_down_small: 甘特圖 <br>
+在此使用python plotly package 來繪製甘特圖，詳細安裝方法，可參考[Plotly官網](https://plot.ly/python/getting-started/)
 ```python
 '''--------plot gantt chart-------'''
 import pandas as pd
