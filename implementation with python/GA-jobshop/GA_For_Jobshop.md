@@ -306,6 +306,11 @@ print("optimal sequence",sequence_best)
 print("optimal value:%f"%Tbest)
 print('the elapsed time:%s'% (time.time() - start_time))
 ```
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/8.JPG" width="700" height="400">
+</div>
+<br>
 
 ### :arrow_down_small: 甘特圖 <br>
 ```python
@@ -348,6 +353,12 @@ for m in m_keys:
 fig = ff.create_gantt(df, index_col='Resource', show_colorbar=True, group_tasks=True, showgrid_x=True, title='Job shop Schedule')
 py.iplot(fig, filename='GA_job_shop_scheduling1', world_readable=True)
 ```
+<br>
+<div align=center>
+<img src="https://github.com/wurmen/Genetic-Algorithm-for-Job-Shop-Scheduling-and-NSGA-II/blob/master/implementation%20with%20python/GA-jobshop/picture/9.JPG" width="650" height="350">
+</div>
+<br>
+
 ## :black_nib: Reference <br>
 - [Wu, Min-You, Multi-Objective Stochastic Scheduling Optimization: A Study of Auto Parts Manufacturer in Taiwan](https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&s=id=%22104NCKU5621001%22.&searchmode=basic)
 - [Chin-Yi Tseng, Intelligent Manufacturing Systems](https://github.com/PO-LAB/Intelligent-Manufacturing-Systems)
