@@ -1,7 +1,7 @@
 # Genetic Algorithm (GA)
 *[POLab](http://polab.imis.ncku.edu.tw/)* <br>
 *[cheng-man wu](https://www.linkedin.com/in/chengmanwu)*<br>
-*2018/07/13*
+*2018/12/01*
 <br>
 
 ## :black_nib: GA 背景 (Background)
